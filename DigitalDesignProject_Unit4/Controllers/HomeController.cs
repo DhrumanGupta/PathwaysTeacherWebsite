@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.MailKit.Core;
-using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Website.Controllers
@@ -37,12 +35,11 @@ namespace Website.Controllers
 
         public IActionResult Login()
         {
-
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string email, string password)
+        private async Task<IActionResult> Login(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
 
@@ -53,11 +50,22 @@ namespace Website.Controllers
 
                 if (signInResult.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Secret");
                 }
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> TryRegister(string email, string password)
+        {
+            if (email == null || password == null ||  password.Length < 6)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return await Register(email, password);
         }
 
         public IActionResult Register()

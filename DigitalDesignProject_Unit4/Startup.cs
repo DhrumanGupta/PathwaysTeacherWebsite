@@ -31,7 +31,7 @@ namespace DigitalDesignProject_Unit4
             // Register the services, using the AppDbContext class
             services.AddIdentity<IdentityUser, IdentityRole>(config =>
             {
-                config.Password.RequiredLength = 4;
+                config.Password.RequiredLength = 6;
                 config.Password.RequireDigit = false;
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
