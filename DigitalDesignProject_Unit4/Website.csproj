@@ -19,4 +19,8 @@
     <Page Include="Views\Shared\Navbar.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
 </Project>

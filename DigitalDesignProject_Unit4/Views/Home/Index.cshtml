@@ -1,5 +1,6 @@
-﻿<style>
+﻿<link rel="stylesheet" href="~/Views/Shared/styles.css">
 
+<style>
     @@media screen and (min-width: 1281px) {
         .table {
             width: 50%;
@@ -178,7 +179,7 @@
                                 <td>@Html.EditorFor(m => m.password, new { htmlAttributes = new { placeholder = "Password", @class = "roundedcorner" } })</td>
                             </tr>
                             <tr>
-                                <td><br /><center><input type="submit" value="Login" class="roundedcorner btn"/></center></td>
+                                <td><br /><center><input type="submit" value="Login" class="roundedcorner btn" /></center></td>
                             </tr>
                         </table>
                     }
