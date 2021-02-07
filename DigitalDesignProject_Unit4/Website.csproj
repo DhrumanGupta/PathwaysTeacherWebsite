@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\_Layout.cshtml" />
+    <Content Remove="Views\Shared\Navbar.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Include="Views\Shared\_Layout.cshtml" />
+    <Page Include="Views\Shared\Navbar.cshtml" />
   </ItemGroup>
 
 </Project>

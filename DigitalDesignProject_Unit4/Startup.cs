@@ -1,3 +1,4 @@
+using Website.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -7,20 +8,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
-using Website.Data;
 
-namespace DigitalDesignProject_Unit4
+namespace Website
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private IConfiguration _config;
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration config)
         {
-            Configuration = configuration;
+            _config = config;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(config =>
@@ -28,10 +27,10 @@ namespace DigitalDesignProject_Unit4
                 config.UseInMemoryDatabase("Memory");
             });
 
-            // Register the services, using the AppDbContext class
+            // AddIdentity registers the services
             services.AddIdentity<IdentityUser, IdentityRole>(config =>
             {
-                config.Password.RequiredLength = 6;
+                config.Password.RequiredLength = 4;
                 config.Password.RequireDigit = false;
                 config.Password.RequireNonAlphanumeric = false;
                 config.Password.RequireUppercase = false;
@@ -42,16 +41,15 @@ namespace DigitalDesignProject_Unit4
 
             services.ConfigureApplicationCookie(config =>
             {
-                config.Cookie.Name = "Indentity.Cookie";
+                config.Cookie.Name = "Identity.Cookie";
                 config.LoginPath = "/Home/Login";
             });
 
-            services.AddMailKit(config => config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
+            services.AddMailKit(config => config.UseMailKit(_config.GetSection("Email").Get<MailKitOptions>()));
 
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -60,11 +58,9 @@ namespace DigitalDesignProject_Unit4
             }
 
             app.UseRouting();
-            
-            // Check who is the user
+
             app.UseAuthentication();
 
-            // Check if user is allowed
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

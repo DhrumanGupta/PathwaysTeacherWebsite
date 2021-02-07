@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NETCore.MailKit.Core;
 using System.Threading.Tasks;
+using Website.Models;
 
 namespace Website.Controllers
 {
@@ -33,69 +34,80 @@ namespace Website.Controllers
             return View();
         }
 
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         [HttpPost]
-        private async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login(User user)
         {
-            var user = await _userManager.FindByEmailAsync(email);
+            string email = user.email;
+            string password = user.password;
 
-            if (user != null)
+            if (email == null)
             {
-                // sign in
-                var signInResult = await _signInManager.PasswordSignInAsync(user, password, true, false);
-
-                if (signInResult.Succeeded)
-                {
-                    return RedirectToAction("Secret");
-                }
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> TryRegister(string email, string password)
-        {
-            if (email == null || password == null ||  password.Length < 6)
-            {
+                TempData["Error"] = "Please enter an email!";
                 return RedirectToAction("Index");
             }
 
-            return await Register(email, password);
-        }
+            var userFromDb = await _userManager.FindByEmailAsync(email);
 
-        public IActionResult Register()
-        {
-            return View();
+            if (userFromDb == null)
+            {
+                TempData["Error"] = "No account is linked with the email provided";
+                return RedirectToAction("Index");
+            }
+
+            // sign in
+            var signInResult = await _signInManager.PasswordSignInAsync(userFromDb, password, true, false);
+
+            if (!signInResult.Succeeded)
+            {
+                TempData["Error"] = "Incorrect password!";
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Secret");
+
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(string email, string password)
+        public async Task<IActionResult> Register(User user)
         {
-            var user = new IdentityUser
+            string email = user.email;
+            string password = user.password;
+
+            System.Diagnostics.Debug.WriteLine("Register Post");
+            if (email != null && password != null && email.Length > 2 && password.Length > 5)
             {
-                UserName = "user",
-                Email = email
-            };
+                var userFromDb = await _userManager.FindByEmailAsync(email);
 
-            var result = await _userManager.CreateAsync(user, password);
+                if (userFromDb != null)
+                {
+                    //user.error = "Account with that email already exists!";
+                    TempData["Error"] = "Account with that email already exists!";
+                    return RedirectToAction("Index");
+                }
 
-            if (result.Succeeded)
-            {
-                // sign in
-                var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var newUser = new IdentityUser
+                {
+                    UserName = email,
+                    Email = email
+                };
 
-                var link = Url.Action(nameof(VerifyEmail), "Home", new { userId = user.Id , code }, Request.Scheme, Request.Host.ToString());
+                var result = await _userManager.CreateAsync(newUser, password);
 
-                await _emailService.SendAsync(email, "Email Verification", $"<a href=\"{link}\">Verify Email</a>", true);
+                if (result.Succeeded)
+                {
+                    // sign in
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
 
-                return RedirectToAction("EmailVerification");
+                    var link = Url.Action(nameof(VerifyEmail), "Home", new { userId = newUser.Id, code }, Request.Scheme, Request.Host.ToString());
+
+                    await _emailService.SendAsync(email, "Email Verification", $"<a href=\"{link}\">Verify Email</a>", true);
+
+                    //System.Diagnostics.Debug.WriteLine("Registered!");
+                    return RedirectToAction("EmailVerification");
+
+                    //return RedirectToAction("Secret");
+                }
             }
-
             return RedirectToAction("Index");
         }
 
@@ -108,7 +120,7 @@ namespace Website.Controllers
 
             if (result.Succeeded)
             {
-                return View();
+                return RedirectToAction("Index");
             }
 
             return BadRequest();
