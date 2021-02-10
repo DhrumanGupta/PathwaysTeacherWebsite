@@ -1,33 +1,36 @@
 ﻿<head>
     <style>
-        @@media screen and (min-width: 1281px) {
-            #navbar {
-                height: 70px !important;
-            }
-        }
-
-        @@media screen and (max-width: 1280px) and (min-width:601px) {
-            #navbar {
-                height: 60px !important;
-            }
-        }
-
-        @@media screen and (max-width: 600px) {
-            #navbar {
-                height: 50px !important;
-            }
-        }
-
         #navbar {
             background-color: #02867b;
             width: 100%;
+            height: auto;
+            font-family: Modern;
+            font-size: calc(16px + 6 * ((100vw - 320px) / 320));
+            color: white;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
         }
 
-        #navbar .navbar-text {
-            font-family: Modern;
-            font-size: 26px;
-            color: white;
+        .navbar-grid-container {
+            display: grid;
+            width: 100%;
+            height: 100%;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
+
+        .page-redirect {
+            transition: .3s;
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+            .page-redirect:hover {
+                background-color: #006e65 !important;
+            }
+
+            .page-redirect:active {
+                background-color: #005c54 !important;
+            }
 
         body {
             padding: 0;
@@ -37,23 +40,33 @@
 </head>
 
 <div id="navbar">
-    <table border="0" width="100%" height="100%">
-        <tr>
-            <td class="navbar-text">
+    <div class="navbar-grid-container">
+        <a href='/Home/Index' class="page-redirect">
+            <div class="grid-item">
                 <center>Home</center>
-            </td>
-            <td class="navbar-text">
+            </div>
+        </a>
+        <a href='/Home/Culture' class="page-redirect">
+            <div class="grid-item">
                 <center>Culture</center>
-            </td>
-            <td class="navbar-text">
+            </div>
+        </a>
+        <a href='/Home/Events' class="page-redirect">
+            <div class="grid-item">
                 <center>Events</center>
-            </td>
-            <td class="navbar-text">
+            </div>
+        </a>
+        <a href='/Home/System' class="page-redirect">
+            <div class="grid-item">
                 <center>System</center>
-            </td>
-            <td class="navbar-text">
+            </div>
+        </a>
+        <a href='/Home/Pioneers' class="page-redirect">
+            <div class="grid-item">
                 <center>Pioneers</center>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </a>
+    </div>
 </div>
+
+@*@RenderBody()*@

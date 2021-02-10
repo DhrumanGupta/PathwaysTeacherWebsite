@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>e8b85831-26d6-445c-ae4a-b3c2caec2f67</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Shared\Navbar.cshtml" />
+    <None Remove="Fonts\modern M.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,11 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Include="Views\Shared\Navbar.cshtml" />
+    <Resource Include="Fonts\modern M.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fonts\" />
+    <Folder Include="Images\" />
   </ItemGroup>
 
 </Project>
