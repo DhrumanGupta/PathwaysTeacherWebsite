@@ -24,15 +24,14 @@ namespace Website.Controllers
             _emailService = emailService;
         }
 
-        // Return to Index
-        public IActionResult LockScreen()
+        // Homepage is protected
+        [Authorize]
+        public IActionResult Index()
         {
             return View();
         }
 
-        // Homepage is protected
-        [Authorize]
-        public IActionResult Index()
+        public IActionResult LockScreen()
         {
             return View();
         }
@@ -166,7 +165,7 @@ namespace Website.Controllers
 
             var token = _userManager.GeneratePasswordResetTokenAsync(user).Result;
 
-            var link = Url.Action(nameof(ResetPassword), "Home", new { userId = user.Id, token }, Request.Scheme, Request.Host.ToString());
+            var link = Url.Action(nameof(ResetPassword), "Home", new { email = user.Email, token }, Request.Scheme, Request.Host.ToString());
 
             await _emailService.SendAsync(user.Email, "Password Reset", $"<a>Follow the link to reset your password</a><a href=\"{link}\">Reset Password</a><a>You can ignore this email if you did not request a reset</a>", true);
 
@@ -174,7 +173,7 @@ namespace Website.Controllers
             return RedirectToAction(nameof(LockScreen));
         }
 
-        public IActionResult ResetPassword(string userId, string token)
+        public IActionResult ResetPassword(string email, string token)
         {
             return View();
         }

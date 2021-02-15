@@ -5,27 +5,27 @@
             width: 100%;
             height: auto;
             font-family: Modern;
-            font-size: calc(16px + 6 * ((100vw - 320px) / 320));
+            font-size: calc(16px + 6 * ((100vw - 340px) / 320));
             color: white;
-            padding-top: 2vh;
-            padding-bottom: 2vh;
+            padding-top: 1.4vh;
+            padding-bottom: 1.4vh;
         }
 
         .navbar-grid-container {
             display: grid;
             width: 100%;
-            height: 100%;
+            height: inherit;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         }
 
         .page-redirect {
             transition: .3s;
-            text-decoration: none !important;
             color: white !important;
         }
 
             .page-redirect:hover {
                 background-color: #006e65 !important;
+                font-size: calc(16px + 6 * ((100vw - 200px) / 320));
             }
 
             .page-redirect:active {
@@ -36,37 +36,48 @@
             padding: 0;
             margin: 0;
         }
+
+        a:link {
+            text-decoration: none !important;
+        }   
     </style>
 </head>
-
 <div id="navbar">
     <div class="navbar-grid-container">
-        <a href='/Home/Index' class="page-redirect">
-            <div class="grid-item">
-                <center>Home</center>
-            </div>
-        </a>
-        <a href='/Home/Culture' class="page-redirect">
-            <div class="grid-item">
-                <center>Culture</center>
-            </div>
-        </a>
-        <a href='/Home/Events' class="page-redirect">
-            <div class="grid-item">
-                <center>Events</center>
-            </div>
-        </a>
-        <a href='/Home/System' class="page-redirect">
-            <div class="grid-item">
-                <center>System</center>
-            </div>
-        </a>
-        <a href='/Home/Pioneers' class="page-redirect">
-            <div class="grid-item">
-                <center>Pioneers</center>
-            </div>
-        </a>
+        <div class="grid-item">
+            <a href='#'>
+                <div class="page-redirect">
+                    <center>Home</center>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href='#Culture'>
+                <div class="page-redirect">
+                    <center>Culture</center>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href='#Events'>
+                <div class="page-redirect">
+                    <center>Events</center>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href='#Systems'>
+                <div class="page-redirect">
+                    <center>Systems</center>
+                </div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href='#Pioneers'>
+                <div class="page-redirect">
+                    <center>Pioneers</center>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
-
-@*@RenderBody()*@

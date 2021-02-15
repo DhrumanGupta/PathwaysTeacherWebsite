@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Fonts\modern M.ttf" />
+    <None Remove="Images\SchoolFrontPrototype.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,10 +22,7 @@
     <Resource Include="Fonts\modern M.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
+    <Resource Include="Images\SchoolFrontPrototype.jpg" />
   </ItemGroup>
 
 </Project>

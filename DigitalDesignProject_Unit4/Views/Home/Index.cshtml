@@ -3,20 +3,19 @@
         margin: 0px;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     .bg {
         background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');
-        height: 100%;
-        /* Center and scale the image nicely */
+        height: 100%; /* Center and scale the image nicely */
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
     }
 
     #navbar {
-        @*clear: both;
-        position: relative;
-        height: 200px;
-        margin-top: -200px;*@
         position: fixed;
         bottom: 0;
     }
@@ -24,4 +23,3 @@
 
 <div class="bg"></div>
 @await Html.PartialAsync("../Shared/Navbar.cshtml")
-@*@{Layout = "../Shared/Navbar.cshtml";}*@
