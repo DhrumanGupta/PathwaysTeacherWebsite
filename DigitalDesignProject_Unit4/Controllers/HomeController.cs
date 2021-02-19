@@ -25,7 +25,7 @@ namespace Website.Controllers
         }
 
         // Homepage is protected
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             return View();
