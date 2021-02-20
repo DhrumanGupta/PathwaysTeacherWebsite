@@ -56,17 +56,18 @@ namespace Website.Controllers
                 return RedirectToAction(nameof(LockScreen));
             }
 
-            // sign in
-            var signInResult = await _signInManager.PasswordSignInAsync(userFromDb, password, true, false);
-
-            if (!signInResult.Succeeded)
+            bool success = await TrySignIn(password, userFromDb);
+            if (!success)
             {
-                TempDataError("Incorrect Credentials");
                 return RedirectToAction(nameof(LockScreen));
             }
-
             return RedirectToAction(nameof(Index));
+        }
 
+        private async Task<bool> TrySignIn(string password, IdentityUser userFromDb)
+        {
+            var signInResult = await _signInManager.PasswordSignInAsync(userFromDb, password, true, false);
+            return signInResult.Succeeded;
         }
 
         [HttpPost]

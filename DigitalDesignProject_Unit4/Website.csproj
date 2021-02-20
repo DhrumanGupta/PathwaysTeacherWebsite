@@ -1,21 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <OutputType>Exe</OutputType>
-    <UserSecretsId>e8b85831-26d6-445c-ae4a-b3c2caec2f67</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<UserSecretsId>e8b85831-26d6-445c-ae4a-b3c2caec2f67</UserSecretsId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.2" />
-    <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.2" />
+		<PackageReference Include="NETCore.MailKit" Version="2.0.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\css\style.css" />
-    <None Include="wwwroot\js\StickyHeader.js" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="wwwroot\css\style.css" />
+		<None Include="wwwroot\js\StickyHeader.js" />
+	</ItemGroup>
 
 </Project>

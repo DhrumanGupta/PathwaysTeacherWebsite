@@ -1,5 +1,10 @@
-﻿<link href="~/css/style.css" rel="stylesheet" />
-<script src=""
+﻿@page
+@using Website.Views.Home
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IndexModel
+
+<link href="~/css/style.css" rel="stylesheet" />
+<script src="~/js/StickyHeader.js"></script>
 
 <div id="Navbar" class="footer">
     <div class="navbar-grid-container">
@@ -7,6 +12,7 @@
             <a href='#'>
                 <center>Home</center>
             </a>
+
         </div>
         <div class="grid-item page-redirect">
             <a href='#Culture'>
@@ -117,6 +123,7 @@
     <br />
     <br />
     <br />
+
 </div>
 
 <br />
