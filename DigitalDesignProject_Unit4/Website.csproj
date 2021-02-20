@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Fonts\modern M.ttf" />
-    <None Remove="Images\SchoolFrontPrototype.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.2" />
@@ -19,10 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\modern M.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\SchoolFrontPrototype.jpg" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\js\StickyHeader.js" />
   </ItemGroup>
 
 </Project>

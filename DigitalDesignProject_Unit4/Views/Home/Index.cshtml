@@ -1,151 +1,7 @@
-﻿<style>
-    body {
-        margin: 0px;
-    }
+﻿<link href="~/css/style.css" rel="stylesheet" />
+<script src=""
 
-    html {
-        scroll-behavior: smooth;
-    }
-
-    /*#region Navbar*/
-    .footer {
-        bottom: 0;
-        position: absolute;
-    }
-
-    .sticky {
-        top: 0;
-        position: fixed;
-    }
-
-    #navbar {
-        background-color: #02867b;
-        width: 100%;
-        height: auto;
-        font-size: calc(16px + 6 * ((100vw - 340px) / 320));
-        color: white;
-        padding-top: 1.4vh;
-        padding-bottom: 1.4vh;
-    }
-
-    .navbar-grid-container {
-        display: grid;
-        width: 100%;
-        height: inherit;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    .page-redirect {
-        transition: .3s;
-        color: white !important;
-    }
-
-        .page-redirect:hover {
-            background-color: #006e65 !important;
-            font-size: calc(16px + 6 * ((100vw - 200px) / 320));
-        }
-
-        .page-redirect:active {
-            background-color: #005c54 !important;
-        }
-    /*#endregion Navbar*/
-
-    /*#region Home*/
-    .home-bg {
-        background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-    /*#endregion Home*/
-
-    /*#region Culture*/
-    .culture-grid-container {
-        margin: auto !important;
-        width: 70%;
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        grid-auto-rows: 5vh;
-    }
-
-        .culture-grid-container .left {
-            grid-column-start: 1;
-            grid-column-end: 2;
-            grid-row-start: 1;
-            grid-row-end: 8;
-            border: 3px dashed red;
-        }
-
-        .culture-grid-container .culture-header {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            grid-row-start: 1;
-            grid-row-end: 2;
-            border: 3px dashed black;
-        }
-
-        .culture-grid-container .culture-content {
-            grid-column-start: 2;
-            grid-column-end: 3;
-            grid-row-start: 2;
-            grid-row-end: 8;
-            border: 3px dashed gray;
-        }
-
-        .culture-grid-container .right {
-            grid-column-start: 3;
-            grid-column-end: 4;
-            grid-row-start: 1;
-            grid-row-end: 8;
-            border: 3px dashed green;
-        }
-
-        .culture-grid-container .image {
-        }
-
-        .culture-grid-container .culture-section {
-            display: contents;
-        }
-        /*#endregion Culture*/
-        a:any-link {
-            text-decoration: none;
-            color: white;
-        }
-
-    a {
-        font-family: Modern;
-    }
-
-    p {
-        font-family: Modern;
-    }
-</style>
-
-<script>
-    var header;
-    var sticky;
-
-    window.onscroll = function () { ChangeClass() };
-
-    window.onload = function () {
-        header = document.getElementById("navbar");
-        sticky = header.offsetTop;
-    };
-
-    function ChangeClass() {
-        if (window.pageYOffset > sticky) {
-            header.classList.add("sticky");
-            header.classList.remove("footer");
-        }
-        else {
-            header.classList.remove("sticky");
-            header.classList.add("footer");
-        }
-    }
-</script>
-
-<div id="navbar" class="footer">
+<div id="Navbar" class="footer">
     <div class="navbar-grid-container">
         <div class="grid-item page-redirect">
             <a href='#'>
@@ -177,31 +33,109 @@
 
 <div id="Home">
     <div class="home-bg"></div>
+    <br />
 </div>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-
 <div id="Culture">
-    <div class="culture-grid-container">
-        <div class="culture-section">
-            <img class="left image" alt="image" />
-            <div class="culture-header">
-                <a>Header</a>
-            </div>
-            <div class="culture-content">
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="culture-section">
+        <div class="left image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="culture-header">
+            <a>
+                OUR CULTURE
+            </a>
+        </div>
+        <div class="culture-content">
+            <center>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
-            </div>
-            <img class="right image" alt="image" />
+            </center>
+        </div>
+        <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+    </div>
+
+    <div class="culture-space">
+        <div class="culture-space-color">
+
         </div>
     </div>
+
+    <div class="culture-section">
+        <div class="left image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="culture-header">
+            <a>
+                OUR CULTURE
+            </a>
+        </div>
+        <div class="culture-content">
+            <center>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </center>
+        </div>
+        <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+    </div>
+
+    <div class="culture-space">
+        <div class="culture-space-color">
+
+        </div>
+    </div>
+
+    <div class="culture-section">
+        <div class="left image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="culture-header">
+            <a>
+                OUR CULTURE
+            </a>
+        </div>
+        <div class="culture-content">
+            <center>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </center>
+        </div>
+        <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+    </div>
+    <br />
 </div>
 
+<div id="Events">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <br />
 <br />
 <br />
