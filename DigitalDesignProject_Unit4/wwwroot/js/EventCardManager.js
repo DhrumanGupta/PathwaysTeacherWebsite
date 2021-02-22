@@ -31,32 +31,51 @@ function OnHoverLeave(element) {
 
 function OnClick(element) {
     var id = element.id;
-    alert(id);
-    ShowModal();
+    for (i = 0; i < events.length; i++) {
+        if (events[i].Id == id) {
+            var event = events[i];
+            ShowModal(event);
+            break;
+        }
+    }
 }
 
 var modal;
 var close;
+var modalHeader;
+var modalSubheader;
+var modalContent;
 
 function InitializeEventModal() {
     modal = document.getElementById("Modal");
-    close = document.getElementsByClassName("modal-close")[0];
+
+    close = modal.getElementsByClassName("modal-close")[0];
+    close.onclick = function () {
+        CloseModal();
+    }
+
+    modalHeader = modal.getElementsByClassName("modal-header")[0];
+    modalSubheader = modal.getElementsByClassName("modal-subheader")[0];
+    modalContent = modal.getElementsByClassName("modal-content")[0];
 }
 
 // When the user clicks on the button, open the modal
-function ShowModal() {
-    alert('id');
+function ShowModal(event) {
+    modalHeader.innerHTML = event.Name;
+    modalSubheader.innerHTML = event.startTime + " - " + event.endTime + " (Approx.)";
+    modalContent.innerHTML = event.description;
+
     modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
-close.onclick = function () {
+function CloseModal() {
     modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+        CloseModal();
     }
 }

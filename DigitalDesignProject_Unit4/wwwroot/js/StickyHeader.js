@@ -1,4 +1,4 @@
-﻿var header;
+﻿var stickyHeaderFooter;
 var sticky;
 var originalHeight;
 var heightOffest;
@@ -16,28 +16,23 @@ window.onscroll = function () {
 
 // Called from Body's OnLoad
 function InitializeSticky() {
-    header = document.getElementById("Navbar");
+    stickyHeaderFooter = document.getElementById("Navbar");
 
-    if (header == undefined) {
-        alert("Test");
-        location.reload();
-    }
-
-    sticky = header.offsetTop;
-    originalHeaderHeight = header.clientHeight;
+    sticky = stickyHeaderFooter.offsetTop;
+    originalHeaderHeight = stickyHeaderFooter.clientHeight;
     originalHeight = window.innerHeight;
     heightOffest = 0;
 }
 
 function UpdateSticky() {
     if (window.pageYOffset - headerOffset > sticky - heightOffest) {
-        header.classList.add("sticky");
-        header.classList.remove("footer");
-        headerOffset = originalHeaderHeight - header.clientHeight;
+        stickyHeaderFooter.classList.add("sticky");
+        stickyHeaderFooter.classList.remove("footer");
+        headerOffset = originalHeaderHeight - stickyHeaderFooter.clientHeight;
     }
     else {
-        header.classList.remove("sticky");
-        header.classList.add("footer");
-        headerOffset = originalHeaderHeight - header.clientHeight;
+        stickyHeaderFooter.classList.remove("sticky");
+        stickyHeaderFooter.classList.add("footer");
+        headerOffset = originalHeaderHeight - stickyHeaderFooter.clientHeight;
     }
 }
