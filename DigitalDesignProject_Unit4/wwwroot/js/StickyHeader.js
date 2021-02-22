@@ -6,23 +6,28 @@ var heightOffest;
 var originalHeaderHeight;
 var headerOffset;
 
-window.onscroll = function () { UpdateSticky() };
-
 window.onresize = function () {
     heightOffest = originalHeight - window.innerHeight;
-};
-window.onload = function () {
+}
+
+window.onscroll = function () {
+    UpdateSticky();
+}
+
+// Called from Body's OnLoad
+function InitializeSticky() {
     header = document.getElementById("Navbar");
 
     if (header == undefined) {
-        alert("Header is undefined, please try again.");
+        alert("Test");
+        location.reload();
     }
 
     sticky = header.offsetTop;
     originalHeaderHeight = header.clientHeight;
     originalHeight = window.innerHeight;
     heightOffest = 0;
-};
+}
 
 function UpdateSticky() {
     if (window.pageYOffset - headerOffset > sticky - heightOffest) {

@@ -6,7 +6,12 @@ html {
 	scroll-behavior: smooth;
 }
 
+br {
+	line-height: calc(.6vw + .6vh);
+}
+
 /*#region Navbar*/
+
 .footer {
 	bottom: 0;
 	position: absolute;
@@ -51,9 +56,11 @@ html {
 	.page-redirect:active {
 		background-color: #005c54 !important;
 	}
+
 /*#endregion Navbar*/
 
 /*#region Home*/
+
 .home-bg {
 	background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');
 	height: 100%;
@@ -61,6 +68,7 @@ html {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 /*#endregion Home*/
 
 /*#region Culture*/
@@ -159,7 +167,40 @@ html {
 		height: 20%;
 		background: #02867b;
 	}
+
 /*#endregion Culture*/
+
+/*#region Events*/
+
+@media screen and (max-width: 850px) {
+	.event-card {
+		width: 85vw !important;
+		height: calc((1 / 4) * 85vw) !important;
+	}
+}
+
+.events-header {
+	font-size: calc(16px + 6 * ((120vw - 100px) / 320));
+}
+
+.event-card {
+	width: 70vw;
+	height: calc((1 / 4) * 70vw);
+	font-size: calc(16px + 6 * ((80vw - 260px) / 320));
+	margin: auto;
+}
+
+	.event-card .event-bg {
+		width: inherit;
+		height: inherit;
+		overflow: hidden;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+/*#endregion Events*/
+
 a {
 	font-family: Modern;
 }

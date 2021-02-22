@@ -4,6 +4,7 @@
 		<TargetFramework>net5.0</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<UserSecretsId>e8b85831-26d6-445c-ae4a-b3c2caec2f67</UserSecretsId>
+		<StartupObject>Website.Program</StartupObject>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -16,6 +17,10 @@
 	<ItemGroup>
 		<None Include="wwwroot\css\style.css" />
 		<None Include="wwwroot\js\StickyHeader.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="wwwroot\images\" />
 	</ItemGroup>
 
 </Project>

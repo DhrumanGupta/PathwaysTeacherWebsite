@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Website.Data;
 using Website.Services;
 
-namespace Vanilla
+namespace Website
 {
     public class Startup
     {
