@@ -3,12 +3,14 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model IndexModel
 
-<body onload="InitializeSticky(); InitializeEvents('@Model.JsonEvents')">
+<body onload="InitializeSticky(); InitializeEvents('@Model.JsonEvents');">
 </body>
 
 <link href="~/css/style.css" rel="stylesheet" />
+
 <script src="~/js/StickyHeader.js"></script>
 <script src="~/js/EventCardManager.js"></script>
+<script src="~/js/ModalManager.js"></script>
 
 <div id="Navbar" class="footer">
     <div class="navbar-grid-container">
@@ -138,7 +140,7 @@
     @foreach (var e in Model.Events)
     {
         <div class="event-card">
-            <div class="event-bg" style="background-image: url('@e.DefaultImage');" onmouseenter="OnHoverEnter(this);" id="@e.Id" onmouseleave="OnHoverLeave(this)"></div>
+            <div class="event-bg" style="background-image: url('@e.DefaultImage');" onmouseenter="OnHoverEnter(this);" id="@e.Id" onmouseleave="OnHoverLeave(this)" onmousedown="OnClick(this)"></div>
             <a>
                 <center>
                     @e.Name
@@ -150,6 +152,16 @@
         <br />
         <br />
     }
+
+    <div id="Modal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+
+    </div>
 
 </div>
 
