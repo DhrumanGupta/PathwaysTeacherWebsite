@@ -23,6 +23,7 @@ namespace Website.Controllers
             _emailService = emailService;
         }
 
+        // Homepage is protected
         [Authorize]
         public IActionResult Index()
         {
