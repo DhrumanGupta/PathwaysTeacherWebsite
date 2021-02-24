@@ -62,8 +62,8 @@ function InitializeEventModal() {
 // When the user clicks on the button, open the modal
 function ShowModal(event) {
     modalHeader.innerHTML = event.Name;
-    modalSubheader.innerHTML = event.startTime + " - " + event.endTime + " (Approx.)";
-    modalContent.innerHTML = event.description;
+    modalSubheader.innerHTML = event.StartTime + " - " + event.EndTime + " (Approx.)";
+    modalContent.innerHTML = event.Description;
 
     modal.style.display = "block";
 }
