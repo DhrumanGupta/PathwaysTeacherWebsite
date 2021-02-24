@@ -1,4 +1,19 @@
-﻿body {
+﻿/*#region Element Overrides*/
+
+a {
+	font-family: Modern;
+}
+
+	a:any-link {
+		text-decoration: none;
+		color: white;
+	}
+
+p {
+	font-family: Modern;
+}
+
+body {
 	margin: 0px;
 }
 
@@ -9,6 +24,8 @@ html {
 br {
 	line-height: calc(.6vw + .6vh);
 }
+
+/*#endregion Element Overrides*/
 
 /*#region Navbar*/
 
@@ -62,7 +79,7 @@ br {
 /*#region Home*/
 
 .home-bg {
-	background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');
+	background-image: url('../images/SchoolFront.png');
 	height: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -178,20 +195,24 @@ br {
 		height: calc((1 / 4) * 85vw) !important;
 	}
 
-	.event-card:hover {
-		width: 87vw !important;
-		height: calc((1 / 4) * 87vw) !important;
-	}
+		.event-card:hover {
+			width: 87vw !important;
+			height: calc((1 / 4) * 87vw) !important;
+		}
 }
 
 .events-header {
 	font-size: calc(16px + 6 * ((120vw - 100px) / 320));
+	/* Center Text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* End Center Text */
 }
 
 .event-card {
 	width: 70vw;
 	height: calc((1 / 4) * 70vw);
-	font-size: calc(16px + 6 * ((50vw - 160px) / 240));
 	margin: auto;
 	transition: 0.2s;
 }
@@ -211,6 +232,19 @@ br {
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+
+	.event-card .event-name {
+		padding-top: .2vh;
+		font-size: calc(16px + 6 * ((40vw - 260px) / 280)) !important;
+		color: rgba(0, 0, 0, 0.8) !important;
+		/* Center Text */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		/* End Center Text */
+	}
+
+/*#endregion Events*/
 
 /*#region Modal*/
 
@@ -273,24 +307,10 @@ br {
 .modal-content {
 	font-size: calc(12px + 6 * ((30vw - 160px) / 240));
 	/* Center Text */
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 	/* End Center Text */
 }
 
 /*#endregion Modal*/
-
-/*#endregion Events*/
-a {
-	font-family: Modern;
-}
-
-	a:any-link {
-		text-decoration: none;
-		color: white;
-	}
-
-p {
-	font-family: Modern;
-}

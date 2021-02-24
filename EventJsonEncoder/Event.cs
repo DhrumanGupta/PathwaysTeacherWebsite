@@ -12,9 +12,7 @@ namespace EventJsonEncoder
         public string StartTime { get; set; }
         public string EndTime { get; set; }
 
-        [JsonProperty("imgDefault")]
-        public string DefaultImage { get; set; }
-        [JsonProperty("imgHover")]
-        public string HoverImage { get; set; }
+        [JsonProperty("img")]
+        public string Image { get; set; }
     }
 }

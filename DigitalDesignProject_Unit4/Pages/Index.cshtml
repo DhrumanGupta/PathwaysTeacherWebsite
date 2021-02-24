@@ -11,6 +11,21 @@
 <script src="~/js/StickyHeader.js"></script>
 <script src="~/js/EventCardManager.js"></script>
 
+<div id="Modal" class="modal">
+    <div class="modal-body">
+        <span class="modal-close">&times;</span>
+        <a class="modal-header">
+        </a>
+        <a class="modal-subheader">
+        </a>
+        <br />
+        <br />
+        <p class="modal-content"></p>
+
+    </div>
+
+</div>
+
 <div id="Navbar" class="footer">
     <div class="navbar-grid-container">
         <div class="grid-item page-redirect">
@@ -130,20 +145,16 @@
     <br />
 
     <a class="events-header">
-        <center>
             EVENTS
-        </center>
     </a>
     <br />
 
     @foreach (var e in Model.Events)
     {
         <div class="event-card">
-            <div class="event-bg" style="background-image: url('@e.DefaultImage');" onmouseenter="OnHoverEnter(this);" id="@e.Id" onmouseleave="OnHoverLeave(this)" onmousedown="OnClick(this)"></div>
-            <a>
-                <center>
+            <div class="event-bg" style="background-image: url('@e.Image');" id="@e.Id" onmousedown="OnClick(this)"></div>
+            <a class="event-name">
                     @e.Name
-                </center>
             </a>
         </div>
         <br />
@@ -152,20 +163,7 @@
         <br />
     }
 
-    <div id="Modal" class="modal">
-        <div class="modal-body">
-            <span class="modal-close">&times;</span>
-            <a class="modal-header">
-            </a>
-            <a class="modal-subheader">
-            </a>
-            <br />
-            <br />
-            <p class="modal-content"></p>
-
-        </div>
-
-    </div>
+    
 
 </div>
 

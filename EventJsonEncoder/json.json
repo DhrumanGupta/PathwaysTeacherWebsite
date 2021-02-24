@@ -1,11 +1,10 @@
 [
   {
-    "Name": "Founder's Day",
-    "Description": "Description for founder's day",
-    "Id": "X2UhX7uALrqjUSB1",
-    "StartTime": "january",
-    "EndTime": "february",
-    "imgDefault": "https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png",
-    "imgHover": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
+    "Name": "Founders Day",
+    "Description": "Founder's Day is a musical that is performed each year by the Secondary School and Primary School respectively.<br><br>Since Founder's Day is a musical performance, it required a lot of preparation starting from interviews to practicing and/or making props among other things. Since this is a huge undertaking, a lot of lessons are used to do it.  It reduces the time students get to study by a lot. It takes 3-4 weeks to prepare for, and the time spent each day increases as the event approaches.<br><br>The school goes into evening rehearsals during the last week of preparation, and all participating grades go into full practice, and no study.",
+    "Id": "HMzwdR5M3itvGlX7",
+    "StartTime": "Last week of February",
+    "EndTime": "Third week of March",
+    "img": "/images/SchoolFront.png"
   }
 ]

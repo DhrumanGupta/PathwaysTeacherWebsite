@@ -8,13 +8,6 @@ namespace EventJsonEncoder
 {
     class Program
     {
-        private enum Scope
-        {
-            List,
-            Event
-        }
-
-        private static Scope _scope = Scope.List;
         private static int _index = 0;
 
         private static List<Event> _events;
@@ -25,11 +18,11 @@ namespace EventJsonEncoder
             { "view", View },
             { "show", View },
             { "add", Add },
-            { "goto", GoTo },
             { "remove", Delete },
             { "delete", Delete },
             { "save", Push },
             { "push", Push },
+            { "get", Get },
             { "close", End },
             { "end", End },
             { "exit", End }
@@ -68,20 +61,40 @@ namespace EventJsonEncoder
 
         private static void View()
         {
-            if (_scope == Scope.Event)
-            {
-                string eventToShow = JsonConvert.SerializeObject(_events[_index], Formatting.Indented);
-                Console.WriteLine(eventToShow);
-            }
-            else
-            {
-                string allEvents = JsonConvert.SerializeObject(_events, Formatting.Indented);
+            string events = JsonConvert.SerializeObject(_events, Formatting.Indented);
+            Console.WriteLine(events);
 
-                Console.WriteLine(allEvents);
-            }
             GetCommand();
         }
 
+        private static string GetStringConfirmed(string toWrite)
+        {
+            Console.WriteLine(toWrite);
+
+            string prop = Console.ReadLine();
+
+            return prop;
+        }
+
+        private static void SaveData()
+        {
+            File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(_events, Formatting.Indented));
+        }
+
+        private static int GetValidIndex()
+        {
+            Console.WriteLine("Which index do you want to access?");
+
+            int result;
+            while (!Int32.TryParse(Console.ReadLine(), out result) || result > _events.Count - 1)
+            {
+                Console.WriteLine("Please give a valid integer, in range");
+            }
+
+            return result;
+        }
+
+        #region Add Delete
 
         private static void Add()
         {
@@ -90,8 +103,7 @@ namespace EventJsonEncoder
             {
                 Name = GetStringConfirmed("Name: "),
                 Description = GetStringConfirmed("Description: "),
-                DefaultImage = GetStringConfirmed("Default Image: "),
-                HoverImage = GetStringConfirmed("Hover Image: "),
+                Image = GetStringConfirmed("Image: "),
                 StartTime = GetStringConfirmed("Start Time: "),
                 EndTime = GetStringConfirmed("End Time: ")
             };
@@ -111,40 +123,6 @@ namespace EventJsonEncoder
             GetCommand();
         }
 
-        private static string GetStringConfirmed(string toWrite)
-        {
-            Console.WriteLine(toWrite);
-
-            string prop = Console.ReadLine();
-
-            return prop;
-        }
-
-        private static void SaveData()
-        {
-            File.WriteAllText(_jsonPath, JsonConvert.SerializeObject(_events, Formatting.Indented));
-        }
-
-        private static void GoTo()
-        {
-            _index = GetValidIndex();
-            _scope = Scope.Event;
-            GetCommand();
-        }
-
-        private static int GetValidIndex()
-        {
-            Console.WriteLine("Which index do you want to access?");
-
-            int result;
-            while (!Int32.TryParse(Console.ReadLine(), out result) || result > _events.Count - 1)
-            {
-                Console.WriteLine("Please give a valid integer, in range");
-            }
-
-            return result;
-        }
-
         private static void Delete()
         {
             var index = GetValidIndex();
@@ -152,6 +130,10 @@ namespace EventJsonEncoder
             SaveData();
             GetCommand();
         }
+
+        #endregion
+
+        #region Get Push
 
         private static void Push()
         {
@@ -162,6 +144,18 @@ namespace EventJsonEncoder
 
             GetCommand();
         }
+
+        private static void Get()
+        {
+            var dataToSave = File.ReadAllText(_jsonPushPath);
+            File.WriteAllText(_jsonPath, dataToSave);
+
+            Console.WriteLine($"Got data from: {Path.GetFullPath(_jsonPushPath)}");
+
+            GetCommand();
+        }
+
+        #endregion
 
         private static void End()
         {

@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Hosting;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Website.Models;
+using Newtonsoft.Json;
 
 namespace Website.Services
 {
@@ -28,11 +24,7 @@ namespace Website.Services
         {
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
-                return JsonSerializer.Deserialize<Event[]>(jsonFileReader.ReadToEnd(),
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
+                return JsonConvert.DeserializeObject<Event[]>(jsonFileReader.ReadToEnd());
             }
         }
     }
