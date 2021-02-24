@@ -2,8 +2,8 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model IndexModel
 
-<body onload="InitializeSticky(); InitializeEvents('@Model.JsonEvents');">
-</body>
+@*<body onload="InitializeSticky(); InitializeEvents('@Model.JsonEvents');">
+    </body>*@
 
 <link href="~/css/style.css" rel="stylesheet" />
 
@@ -144,16 +144,17 @@
     <br />
 
     <a class="events-header">
-            EVENTS
+        EVENTS
     </a>
     <br />
 
-    @foreach (var e in Model.Events)
+
+    @foreach (var Event in Model.Events)
     {
         <div class="event-card">
-            <div class="event-bg" style="background-image: url('@e.Image');" id="@e.Id" onmousedown="OnClick(this)"></div>
+            <div class="event-bg" style="background-image: url('@Event.Image');" id="@Event.Id" onmousedown="OnClick(this)"></div>
             <a class="event-name">
-                    @e.Name
+                @Event.Name
             </a>
         </div>
         <br />
@@ -162,7 +163,7 @@
         <br />
     }
 
-    
+
 
 </div>
 

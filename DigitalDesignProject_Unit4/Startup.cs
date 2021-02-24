@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NETCore.MailKit.Extensions;
 using NETCore.MailKit.Infrastructure.Internal;
+using System;
+using System.IO;
 using Website.Data;
 using Website.Services;
 
@@ -25,6 +28,14 @@ namespace Website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDataProtection()
+                // Folder to save in
+                .PersistKeysToFileSystem(new DirectoryInfo("\\MyFolder\\keys\\"))
+                // Keep same name when updating project
+                .SetApplicationName("Website")
+                .SetDefaultKeyLifetime(TimeSpan.FromDays(90));
+
             services.AddDbContext<AppDbContext>(config =>
             {
                 config.UseInMemoryDatabase("Memory");

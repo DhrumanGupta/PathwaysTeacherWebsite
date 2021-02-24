@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Text.Json;
+using Newtonsoft.Json;
 using Website.Models;
 using Website.Services;
 
@@ -28,12 +27,16 @@ namespace Website.Views.Home
 
         private void LoadEvents()
         {
+            System.Diagnostics.Debug.WriteLine("\n\n\n\n\n\n\n\n\n\nWORKING\n\n\n\n\n\n\n\n\n\n");
             this.Events = eventService.GetEvents();
         }
 
         public string JsonEvents
         {
-            get { return JsonSerializer.Serialize(eventService.GetEvents()); }
+            get
+            {
+                return JsonConvert.SerializeObject(eventService.GetEvents());
+            }
         }
     }
 }
