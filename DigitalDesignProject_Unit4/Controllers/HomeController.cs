@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using NETCore.MailKit.Core;
 using System.Threading.Tasks;
 using Website.Models;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Website.Controllers
 {
@@ -12,22 +15,25 @@ namespace Website.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailService _emailService;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
         private static readonly string errorColor = "#ff4d4d";
         private static readonly string successColor = "#97ff80";
 
-        public HomeController(UserManager<IdentityUser> usermanager, SignInManager<IdentityUser> signInManager, IEmailService emailService)
+        public HomeController(UserManager<IdentityUser> usermanager, SignInManager<IdentityUser> signInManager, IEmailService emailService, IWebHostEnvironment webHostEnvironment)
         {
             _userManager = usermanager;
             _signInManager = signInManager;
             _emailService = emailService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // Homepage is protected
         [Authorize]
         public IActionResult Index()
         {
-            return View();
+            System.Diagnostics.Debug.WriteLine("\n\n\n\n\n\nDWADAWDAWDAW");
+            return View(GetsEvents());
         }
 
         public IActionResult LockScreen()
@@ -216,6 +222,11 @@ namespace Website.Controllers
         {
             TempData["Error"] = message;
             TempData["Color"] = successColor;
+        }
+
+        private Event[] GetsEvents()
+        {
+            return JsonConvert.DeserializeObject<Event[]>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", "events.json")));
         }
 
         private bool IsEmailValid(string email)

@@ -1,15 +1,13 @@
-﻿@page
-@using Website.Views.Home
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model IndexModel
+﻿@using Website.Models
+@model Event[]
 
-@*<body onload="InitializeSticky(); InitializeEvents('@Model.JsonEvents');">
-    </body>*@
+<body onload="InitializeSticky(); InitializeEvents();">
+</body>
 
 <link href="~/css/style.css" rel="stylesheet" />
 
 <script src="~/js/StickyHeader.js"></script>
-<script src="~/js/EventCardManager.js"></script>
+@*<script src="~/js/EventCardManager.js"></script>*@
 
 <div id="Modal" class="modal">
     <div class="modal-body">
@@ -150,7 +148,7 @@
     <br />
 
 
-    @foreach (var Event in Model.Events)
+    @foreach (var Event in Model)
     {
         <div class="event-card">
             <div class="event-bg" style="background-image: url('@Event.Image');" id="@Event.Id" onmousedown="OnClick(this)"></div>
@@ -190,3 +188,67 @@
 <br />
 <br />
 <br />
+
+<script type="text/javascript">
+    var events;
+
+    // Called from Body's OnLoad
+    function InitializeEvents() {
+        events = @Html.Raw(Json.Serialize(Model));
+        InitializeEventModal();
+    }
+
+    function OnClick(element) {
+        var id = element.id;
+        for (i = 0; i < events.length; i++) {
+            alert(id);
+            alert(events[i].id);
+            if (events[i].id == id) {
+                alert("found");
+                var event = events[i];
+                ShowModal(event);
+                break;
+            }
+        }
+    }
+
+    var modal;
+    var close;
+    var modalHeader;
+    var modalSubheader;
+    var modalContent;
+
+    function InitializeEventModal() {
+        modal = document.getElementById("Modal");
+
+        close = modal.getElementsByClassName("modal-close")[0];
+        close.onclick = function () {
+            CloseModal();
+        }
+
+        modalHeader = modal.getElementsByClassName("modal-header")[0];
+        modalSubheader = modal.getElementsByClassName("modal-subheader")[0];
+        modalContent = modal.getElementsByClassName("modal-content")[0];
+    }
+
+    // When the user clicks on the button, open the modal
+    function ShowModal(event) {
+        modalHeader.innerHTML = event.name;
+        modalSubheader.innerHTML = event.startTime + " - " + event.endTime + " (Approx.)";
+        modalContent.innerHTML = event.description;
+
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    function CloseModal() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            CloseModal();
+        }
+    }
+</script>
