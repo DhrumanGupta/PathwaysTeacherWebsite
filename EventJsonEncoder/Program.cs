@@ -149,6 +149,7 @@ namespace EventJsonEncoder
         {
             var dataToSave = File.ReadAllText(_jsonPushPath);
             File.WriteAllText(_jsonPath, dataToSave);
+            _events = JsonConvert.DeserializeObject<List<Event>>(dataToSave);
 
             Console.WriteLine($"Got data from: {Path.GetFullPath(_jsonPushPath)}");
 

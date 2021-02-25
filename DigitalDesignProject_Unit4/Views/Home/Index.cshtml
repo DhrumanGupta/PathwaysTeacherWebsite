@@ -151,7 +151,7 @@
     @foreach (var Event in Model)
     {
         <div class="event-card">
-            <div class="event-bg" style="background-image: url('@Event.Image');" id="@Event.Id" onmousedown="OnClick(this)"></div>
+            <div class="event-bg" style="background-image: url('@Event.Image');" onmousedown="OnClick('@Event.Id')"></div>
             <a class="event-name">
                 @Event.Name
             </a>
@@ -160,10 +160,65 @@
         <br />
         <br />
         <br />
+        <br />
     }
 
 
 
+</div>
+
+<div id="Systems">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="system-grid-container">
+        <div class="system-grid-item">
+            <a class="system-header">
+                Google Classroom
+            </a>
+
+            <div class="system-image" style="background-image: url(/images/SchoolFront.jpg);"></div>
+
+            <p class="system-usage system-text">
+                Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.
+            </p>
+
+            <div class="system-content system-text">
+                <p>
+                    Classroom can be used will commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.
+                    <br />
+                    <br />
+
+                    Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast.
+
+                    <br />
+                    <br />
+
+                    Below are a few resources:
+                    <br />
+                    <br />
+
+                    &bull; <a href="https://www.youtube.com/watch?v=UEFgW--0094" target="_blank">Google Classroom 101</a>
+                    <br />
+                    <br />
+                    &bull; <a href="https://edu.google.com/teacher-center/products/classroom/?modal_active=none" target="_blank">Teacher Center | Google Classroom Training</a>
+                    <br />
+                    <br />
+                    &bull; <a href="https://www.youtube.com/watch?v=M6L-nZGIUTE" target="_blank">The NEW Google Classroom - Full Tutorial</a>
+                </p>
+
+            </div>
+        </div>
+        <div class="system-grid-item">
+            <a>System 2</a>
+        </div>
+        <div class="system-grid-item">
+            <a>System 3</a>
+        </div>
+    </div>
 </div>
 
 <br />
@@ -198,8 +253,7 @@
         InitializeEventModal();
     }
 
-    function OnClick(element) {
-        var id = element.id;
+    function OnClick(id) {
         for (i = 0; i < events.length; i++) {
             if (events[i].id == id) {
                 var event = events[i];

@@ -6,7 +6,6 @@ a {
 
 	a:any-link {
 		text-decoration: none;
-		color: white;
 	}
 
 p {
@@ -26,6 +25,75 @@ br {
 }
 
 /*#endregion Element Overrides*/
+
+/*#region Modal*/
+
+.modal {
+	transition: 0.1s;
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-body {
+	background-color: #fefefe;
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal-close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+	.modal-close:hover,
+	.modal-close:focus {
+		color: black;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+.modal-header {
+	font-size: calc(20px + 6 * ((40vw - 100px) / 240));
+	/* Center Text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* End Center Text */
+}
+
+.modal-subheader {
+	font-size: calc(12px + 6 * ((30vw - 120px) / 240));
+	/* Center Text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* End Center Text */
+}
+
+.modal-content {
+	font-size: calc(12px + 6 * ((30vw - 160px) / 240));
+	/* Center Text */
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	/* End Center Text */
+}
+
+/*#endregion Modal*/
 
 /*#region Navbar*/
 
@@ -52,6 +120,10 @@ br {
 	color: white;
 	transition: .1s;
 }
+
+	#Navbar a:any-link {
+		color: white !important;
+	}
 
 .navbar-grid-container {
 	display: grid;
@@ -246,71 +318,81 @@ br {
 
 /*#endregion Events*/
 
-/*#region Modal*/
+/*#region Systems*/
 
-.modal {
-	transition: 0.1s;
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+@media screen and (max-width: 700px) {
+	.system-grid-container {
+		grid-template-columns: 1fr !important;
+		grid-auto-rows: calc(1.1 * 93vw) !important;
+	}
 }
 
-/* Modal Content/Box */
-.modal-body {
-	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
-	padding: 20px;
-	border: 1px solid #888;
-	width: 80%; /* Could be more or less, depending on screen size */
+@media screen and (min-width: 701px) and (max-width: 1320px) {
+	.system-grid-container {
+		grid-template-columns: 1fr 1fr !important;
+		grid-auto-rows: calc(0.8 * 93vw) !important;
+	}
 }
 
-/* The Close Button */
-.modal-close {
-	color: #aaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
+.system-grid-container {
+	width: 93vw;
+	height: auto;
+	/* Grid Settings */
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: calc(0.45* 93vw);
+	grid-column-gap: 4vw;
+	grid-row-gap: 5vh;
+	/*	End Grid Settings*/
+	margin: auto; /* Center Across Body */
 }
 
-	.modal-close:hover,
-	.modal-close:focus {
-		color: black;
-		text-decoration: none;
-		cursor: pointer;
+	.system-grid-container .system-grid-item {
+		padding: 1.2vh;
+		border: 2px solid gray;
+		display: grid;
+		grid-template-rows: 5fr 9fr 30fr;
+		grid-template-columns: 3fr 4fr;
+		grid-column-gap: 1vw;
+		grid-template-areas: "header header" "image use" "content content";
 	}
 
-.modal-header {
-	font-size: calc(20px + 6 * ((40vw - 100px) / 240));
-	/* Center Text */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* End Center Text */
-}
+		.system-grid-container .system-grid-item .system-header {
+			grid-area: header;
+			font-size: calc(16px + 6 * ((80vw - 180px) / 320));
+			margin: auto;
+		}
 
-.modal-subheader {
-	font-size: calc(12px + 6 * ((30vw - 120px) / 240));
-	/* Center Text */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* End Center Text */
-}
+		.system-grid-container .system-grid-item .system-image {
+			grid-area: image;
+			overflow: hidden;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
 
-.modal-content {
-	font-size: calc(12px + 6 * ((30vw - 160px) / 240));
-	/* Center Text */
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-	/* End Center Text */
-}
+		.system-grid-container .system-grid-item .system-usage {
+			grid-area: use;
+		}
 
-/*#endregion Modal*/
+		.system-grid-container .system-grid-item .system-content {
+			grid-area: content;
+			justify-content: flex-start !important;
+		}
+
+		.system-grid-container .system-grid-item .system-text {
+			/* Center Text */
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/* End Center Text */
+			font-size: calc(16px + 6 * ((50vw - 500px) / 600));
+			color: black !important;
+		}
+
+			.system-grid-container .system-grid-item .system-text a:any-link {
+				color: blue !important;
+				text-decoration: underline !important;
+			}
+
+/*#endregion Systems*/
