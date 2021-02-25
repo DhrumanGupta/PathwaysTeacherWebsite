@@ -201,10 +201,7 @@
     function OnClick(element) {
         var id = element.id;
         for (i = 0; i < events.length; i++) {
-            alert(id);
-            alert(events[i].id);
             if (events[i].id == id) {
-                alert("found");
                 var event = events[i];
                 ShowModal(event);
                 break;

@@ -8,8 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NETCore.MailKit.Extensions;
-using NETCore.MailKit.Infrastructure.Internal;
 using System;
 using System.IO;
 using Website.Data;
@@ -29,22 +27,16 @@ namespace Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(Configuration);
+
             services.AddControllersWithViews();
             services.AddMvcCore();
 
             services.AddRazorPages();
 
-            services.AddDataProtection()
-                // Folder to save in
-                .PersistKeysToFileSystem(new DirectoryInfo("\\MyFolder\\keys\\"))
-                // Keep same name when updating project
-                .SetApplicationName("Website")
-                .SetDefaultKeyLifetime(TimeSpan.FromDays(90));
-
-            services.AddDbContext<AppDbContext>(config =>
-            {
-                config.UseInMemoryDatabase("Memory");
-            });
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LocalDB"))
+                );
 
             // AddIdentity registers the services
             services.AddIdentity<IdentityUser, IdentityRole>(config =>
@@ -60,14 +52,12 @@ namespace Website
                 .AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(config =>
-            {
-                config.Cookie.Name = "Identity.Cookie";
-                config.LoginPath = "/Home/LockScreen";
-            });
+                    {
+                        config.Cookie.Name = "Identity.Cookie";
+                        config.LoginPath = "/Home/LockScreen";
+                    });
 
-            services.AddMailKit(config => config.UseMailKit(Configuration.GetSection("Email").Get<MailKitOptions>()));
-
-            services.AddTransient<JsonFileEventService>();
+            services.AddScoped<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
