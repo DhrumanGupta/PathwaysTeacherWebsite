@@ -23,4 +23,8 @@
 		<None Include="wwwroot\js\StickyHeader.js" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="wwwroot\images\systems\" />
+	</ItemGroup>
+
 </Project>
