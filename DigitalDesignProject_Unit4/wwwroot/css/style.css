@@ -1,4 +1,13 @@
-﻿/*#region Element Overrides*/
+﻿.section-header {
+	font-size: calc(17px + 6 * ((120vw - 100px) / 320));
+	/* Center Text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* End Center Text */
+}
+
+/*#region Element Overrides*/
 
 @font-face {
 	font-family: Modern;
@@ -360,7 +369,7 @@ br {
 			font-size: calc(17px + 6 * ((60vw - 500px) / 600)) !important;
 		}
 
-		.system-grid-container .system-grid-item { 
+		.system-grid-container .system-grid-item {
 			grid-template-rows: 2fr 7fr 4fr 25fr !important;
 			grid-template-columns: 1fr !important;
 			grid-template-areas: "header" "image" "use" "content" !important;
@@ -438,11 +447,64 @@ br {
 
 /*#endregion Systems*/
 
-.section-header {
-	font-size: calc(16px + 6 * ((120vw - 100px) / 320));
-	/* Center Text */
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	/* End Center Text */
+/*#region Pioneers*/
+
+.pioneer-group {
+	margin: auto;
+	width: 90vw;
+	height: auto;
+	border: 2px solid gray;
 }
+
+.pioneer-group-grid-container {
+	height: auto;
+	width: inherit;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: calc((1/40) * 90vw);
+	grid-auto-rows: calc((1/5) * 90vw);
+	grid-row-gap: 8px;
+	grid-column-gap: 8px;
+}
+
+	.pioneer-group-grid-container .pioneer-group-title {
+		margin: auto;
+		font-size: calc(12px + 6 * ((60vw - 150px) / 320));
+		grid-column: 1 / -1;
+	}
+
+.pioneer-grid-container {
+	height: 95%;
+	width: 90%;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 5fr 1fr;
+	transition: 0.2s;
+}
+
+	.pioneer-grid-container:active,
+	.pioneer-grid-container:hover {
+		grid-template-rows: 5.5fr 1fr;
+		cursor: pointer;
+		height: 100%;
+	}
+
+	.pioneer-grid-container .pioneer-image {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		width: 100%;
+		height: 100%;
+		margin: auto;
+	}
+
+	.pioneer-grid-container .pioneer-name {
+		font-size: calc(10px + 6 * ((50vw - 160px) / 320));
+	}
+
+	.pioneer-grid-container .pioneer-role {
+		font-size: calc(10px + 6 * ((50vw - 200px) / 320));
+		opacity: 0.9;
+	}
+
+/*#endregion Pioneers*/

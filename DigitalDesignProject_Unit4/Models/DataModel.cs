@@ -9,6 +9,6 @@ namespace Website.Models
     public class DataModel
     {
         public Event[] Events { get; set; }
-        public Pioneer[] Pioneers { get; set; }
+        public PioneerGroup[] PioneerGroups { get; set; }
     }
 }

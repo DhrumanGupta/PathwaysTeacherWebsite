@@ -37,6 +37,7 @@ namespace Website.Controllers
         {
             var dataModel = new DataModel();
             dataModel.Events = GetsEvents();
+            dataModel.PioneerGroups = GetPioneers();
 
             return View(dataModel);
         }
@@ -243,11 +244,6 @@ namespace Website.Controllers
             TempData["Color"] = successColor;
         }
 
-        private Event[] GetsEvents()
-        {
-            return JsonConvert.DeserializeObject<Event[]>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", "events.json")));
-        }
-
         private bool IsEmailValid(string email)
         {
             if (email == null) { return false; }
@@ -259,6 +255,20 @@ namespace Website.Controllers
             string domain = email.Substring(idx + 1).ToLower();    //domain half e.g. my.org
 
             return domain == "pathways.in" || domain == "pathwaysschool.in";
+        }
+
+        #endregion
+
+        #region Data Model Helpers
+
+        private Event[] GetsEvents()
+        {
+            return JsonConvert.DeserializeObject<Event[]>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", "events.json")));
+        }
+
+        private PioneerGroup[] GetPioneers()
+        {
+            return JsonConvert.DeserializeObject<PioneerGroup[]>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", "pioneers.json")));
         }
 
         #endregion

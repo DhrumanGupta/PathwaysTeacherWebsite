@@ -1,7 +1,7 @@
 ﻿@using Website.Models
 @model DataModel
 
-<body onload="InitializeSticky(); InitializeEvents(); InitializeModal();">
+<body onload="InitializeSticky(); InitializeEvents(); InitializeModal(); InitializePioneers();">
 </body>
 
 <link href="~/css/style.css" rel="stylesheet" />
@@ -155,7 +155,7 @@
     @foreach (var Event in Model.Events)
     {
         <div class="event-card">
-            <div class="event-bg" style="background-image: url('@Event.Image');" onmousedown="OnClick('@Event.Id')"></div>
+            <div class="event-bg" style="background-image: url('/images/events/@Event.Image');" onmousedown="OnClick('@Event.Id')"></div>
             <a class="event-name">
                 @Event.Name
             </a>
@@ -315,147 +315,85 @@
     <br />
     <br />
     <br />
-    Pioneers
+    <a class="section-header">
+        Pioneers
+    </a>
+    <br />
+
+    @foreach (var pioneerGroup in Model.PioneerGroups)
+    {
+        <div class="pioneer-group">
+
+            <div class="pioneer-group-grid-container">
+
+
+                <a class="pioneer-group-title">
+                    @pioneerGroup.Title
+                </a>
+
+                @foreach (var pioneer in pioneerGroup.Pioneers)
+                {
+                    <div class="pioneer">
+
+                        <div class="pioneer-grid-container">
+                            <div class="pioneer-image" style="background-image: url('/images/pioneers/@pioneer.ImagePath');">
+
+                            </div>
+
+                            <div>
+
+                                <center>
+                                    <a class="pioneer-name">
+                                        @pioneer.Name
+                                    </a>
+                                </center>
+
+                                @*<br />*@
+
+                                <center>
+                                    <a class="pioneer-role">
+                                        @pioneer.Role
+                                    </a>
+                                </center>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    }
 </div>
 
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
+<!-- EVENTS HOVER MANAGER -->
 <script type="text/javascript">
     var events;
 
     // Called from Body's OnLoad
     function InitializeEvents() {
+        events = @Html.Raw(Json.Serialize(Model.Events));
+    }
+
+    function OnClick(id) {
+        for (i = 0; i < events.length; i++) {
+            if (events[i].id == id) {
+                var event = events[i];
+                var subheader = event.startTime + " - " + event.endTime + " (Approx.)";
+                ShowModal(event.name, subheader, event.description);
+                break;
+            }
+        }
+    }
+
+</script>
+
+<!-- PIONEERS HOVER MANAGER -->
+<script type="text/javascript">
+    var events;
+
+    // Called from Body's OnLoad
+    function InitializePioneers() {
         events = @Html.Raw(Json.Serialize(Model.Events));
     }
 

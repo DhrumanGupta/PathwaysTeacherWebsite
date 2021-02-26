@@ -5,7 +5,7 @@
     "Id": "cDBdLrCgeRxJuPwC",
     "StartTime": "First week of March",
     "EndTime": "Fourth week of March",
-    "img": "/images/events/FounderDay.jpg"
+    "img": "FounderDay.jpg"
   },
   {
     "Name": "Sports Day",
@@ -13,7 +13,7 @@
     "Id": "C3gtGfexSFzbgrYA",
     "StartTime": "First week of February",
     "EndTime": "Third week of February",
-    "img": "/images/events/SportsDay.jpg"
+    "img": "SportsDay.jpg"
   },
   {
     "Name": "Collated Assessments",
@@ -21,6 +21,6 @@
     "Id": "OIvlhZQ2tIltYuxI",
     "StartTime": "End of Semester",
     "EndTime": "End of Year",
-    "img": "/images/events/CollatedAssesments.jpg"
+    "img": "CollatedAssesments.jpg"
   }
 ]
