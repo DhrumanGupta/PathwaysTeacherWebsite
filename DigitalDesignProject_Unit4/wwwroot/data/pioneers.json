@@ -1,0 +1,11 @@
+{
+	"Title": "Faculty Leaders",
+	"People": [
+		{
+			"Name": "Dr. Shalini Advani",
+			"Role": "School Director",
+			"Description": "Description Here",
+			"ImgPath": "Dr_Shalini_Advani.jpg"
+		}
+	]
+}

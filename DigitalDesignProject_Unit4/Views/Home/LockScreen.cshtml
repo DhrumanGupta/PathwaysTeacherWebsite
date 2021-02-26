@@ -1,5 +1,10 @@
 ﻿<style>
 
+    @@font-face {
+	font-family: Modern;
+	src: url('/fonts/MODERN M.TTF');
+    }
+
     @@media screen and (min-width: 1281px) {
         .table {
             width: 50%;
@@ -187,60 +192,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="bg"></div>
 <center>
-<div class="table">
-    <div class="grid-container">
+    <div class="table">
+        <div class="grid-container">
 
-        <div class="table-header">
-            <a>PATHWAYS SCHOOL NOIDA</a>
-            <div class="error-message">
-                <center>@TempData["Error"]</center>
+            <div class="table-header">
+                <a>PATHWAYS SCHOOL NOIDA</a>
+                <div class="error-message">
+                    <center>@TempData["Error"]</center>
+                </div>
             </div>
+
+            <center>
+                <div class="panel">
+                    <div class="login">
+                        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                        {
+                            <br />
+                            <table>
+                                <tr>
+                                    <td>@Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "School Email", @class = "roundedcorner" } })</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.EditorFor(m => m.Password, new { htmlAttributes = new { placeholder = "Password", @class = "roundedcorner" } })</td>
+                                </tr>
+                                <tr>
+                                    <td><br /><center><input type="submit" value="Login" class="roundedcorner btn" /></center></td>
+                                </tr>
+                            </table>
+                        }
+                        <center><a id="forgot-password" href="/Home/SendResetPassword">Forgot Password</a></center></
+                    </div>
+                </div>
+            </center>
+
+            <center>
+                <div class="panel">
+                    <div class="register">
+                        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                        {
+                            <table>
+                                <tr>
+                                    <td>@Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "School Email", @class = "roundedcorner" } })</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.EditorFor(m => m.Password, new { htmlAttributes = new { placeholder = "Password", @class = "roundedcorner" } })</td>
+                                </tr>
+                                <tr>
+                                    <td><br /><center><input type="submit" value="Register" class="roundedcorner btn" /></center></td>
+                                </tr>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </center>
+
         </div>
-
-        <center>
-            <div class="panel">
-                <div class="login">
-                    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-                    {
-                        <br />
-                        <table>
-                            <tr>
-                                <td>@Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "School Email", @class = "roundedcorner" } })</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.EditorFor(m => m.Password, new { htmlAttributes = new { placeholder = "Password", @class = "roundedcorner" } })</td>
-                            </tr>
-                            <tr>
-                                <td><br /><center><input type="submit" value="Login" class="roundedcorner btn" /></center></td>
-                            </tr>
-                        </table>
-                    }
-                    <center><a id="forgot-password" href="/Home/SendResetPassword">Forgot Password</a></center></
-                </div>
-            </div>
-        </center>
-
-        <center>
-            <div class="panel">
-                <div class="register">
-                    @using (Html.BeginForm("Register", "Home", FormMethod.Post))
-                    {
-                        <table>
-                            <tr>
-                                <td>@Html.EditorFor(m => m.Email, new { htmlAttributes = new { placeholder = "School Email", @class = "roundedcorner" } })</td>
-                            </tr>
-                            <tr>
-                                <td>@Html.EditorFor(m => m.Password, new { htmlAttributes = new { placeholder = "Password", @class = "roundedcorner" } })</td>
-                            </tr>
-                            <tr>
-                                <td><br /><center><input type="submit" value="Register" class="roundedcorner btn" /></center></td>
-                            </tr>
-                        </table>
-                    }
-                </div>
-            </div>
-        </center>
-
     </div>
-</div>
 </center>

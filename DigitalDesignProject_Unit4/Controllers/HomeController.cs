@@ -35,7 +35,10 @@ namespace Website.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View(GetsEvents());
+            var dataModel = new DataModel();
+            dataModel.Events = GetsEvents();
+
+            return View(dataModel);
         }
 
         public IActionResult LockScreen()

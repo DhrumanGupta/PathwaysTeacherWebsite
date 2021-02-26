@@ -1,12 +1,13 @@
 ﻿@using Website.Models
-@model Event[]
+@model DataModel
 
-<body onload="InitializeSticky(); InitializeEvents();">
+<body onload="InitializeSticky(); InitializeEvents(); InitializeModal();">
 </body>
 
 <link href="~/css/style.css" rel="stylesheet" />
 
 <script src="~/js/StickyHeader.js"></script>
+<script src="~/js/ModalManager.js"></script>
 
 <div id="Modal" class="modal">
     <div class="modal-body">
@@ -131,6 +132,10 @@
         <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
     </div>
     <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </div>
 
 <div id="Events">
@@ -141,13 +146,13 @@
     <br />
     <br />
 
-    <a class="events-header">
+    <a class="section-header">
         EVENTS
     </a>
     <br />
 
 
-    @foreach (var Event in Model)
+    @foreach (var Event in Model.Events)
     {
         <div class="event-card">
             <div class="event-bg" style="background-image: url('@Event.Image');" onmousedown="OnClick('@Event.Id')"></div>
@@ -162,8 +167,6 @@
         <br />
     }
 
-
-
 </div>
 
 <div id="Systems">
@@ -173,6 +176,11 @@
     <br />
     <br />
     <br />
+    <a class="section-header">
+        SYSTEMS
+    </a>
+    <br />
+
     <div class="system-grid-container">
 
         <!-- CLASSROOM -->
@@ -189,7 +197,7 @@
 
             <div class="system-content system-text">
                 <p>
-                    Classroom can be used will commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.
+                    Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.
                     <br />
                     <br />
 
@@ -292,8 +300,134 @@
             </div>
         </div>
     </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </div>
 
+<div id="Pioneers">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    Pioneers
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <br />
 <br />
 <br />
@@ -322,57 +456,18 @@
 
     // Called from Body's OnLoad
     function InitializeEvents() {
-        events = @Html.Raw(Json.Serialize(Model));
-        InitializeEventModal();
+        events = @Html.Raw(Json.Serialize(Model.Events));
     }
 
     function OnClick(id) {
         for (i = 0; i < events.length; i++) {
             if (events[i].id == id) {
                 var event = events[i];
-                ShowModal(event);
+                var subheader = event.startTime + " - " + event.endTime + " (Approx.)";
+                ShowModal(event.name, subheader, event.description);
                 break;
             }
         }
     }
 
-    var modal;
-    var close;
-    var modalHeader;
-    var modalSubheader;
-    var modalContent;
-
-    function InitializeEventModal() {
-        modal = document.getElementById("Modal");
-
-        close = modal.getElementsByClassName("modal-close")[0];
-        close.onclick = function () {
-            CloseModal();
-        }
-
-        modalHeader = modal.getElementsByClassName("modal-header")[0];
-        modalSubheader = modal.getElementsByClassName("modal-subheader")[0];
-        modalContent = modal.getElementsByClassName("modal-content")[0];
-    }
-
-    // When the user clicks on the button, open the modal
-    function ShowModal(event) {
-        modalHeader.innerHTML = event.name;
-        modalSubheader.innerHTML = event.startTime + " - " + event.endTime + " (Approx.)";
-        modalContent.innerHTML = event.description;
-
-        modal.style.display = "block";
-    }
-
-    // When the user clicks on <span> (x), close the modal
-    function CloseModal() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            CloseModal();
-        }
-    }
 </script>
