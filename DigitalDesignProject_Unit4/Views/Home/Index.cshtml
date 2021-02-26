@@ -1,5 +1,4 @@
-﻿@using Website.Models
-@model DataModel
+﻿@model Website.Models.DataModel
 
 <body onload="InitializeSticky(); InitializeEvents(); InitializeModal(); InitializePioneers();">
 </body>
@@ -70,20 +69,20 @@
     <br />
 
     <div class="culture-section">
-        <div class="left image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="left image" style="background-image: url('/images/culture/TheEnvironment1.jpg');"></div>
         <div class="culture-header">
             <a>
-                OUR CULTURE
+                The Environment
             </a>
         </div>
         <div class="culture-content">
             <center>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Our environment is one where students are encouraged to be more interactive with teachers. They are taught to ask questions and clear their doubts on the spot. As our motto follows, we not only focus on education, we try to create a good balance in academics, physical activities and extracurriculars. The balance shifted radically during major events, giving more priority to the approaching event.
                 </p>
             </center>
         </div>
-        <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="right image" style="background-image: url('/images/culture/TheEnvironment2.jpg');"></div>
     </div>
 
     <div class="culture-space">
@@ -93,20 +92,20 @@
     </div>
 
     <div class="culture-section">
-        <div class="left image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="left image" style="background-image: url('/images/culture/Difference1.jpg');"></div>
         <div class="culture-header">
             <a>
-                OUR CULTURE
+                How is it Different?
             </a>
         </div>
         <div class="culture-content">
             <center>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    The school has a friendly and respectful environment where a lot of formal customs are removed. These include but are not limited to: standing up and greeting the teacher together as a class, asking freely for extra time to clear doubts and in general, having a more casual and friendly, yet respecting relationship with students. Students are encouraged to be more independent learners, who are able to learn facts, information and think without constant involvement from the teacher.
                 </p>
             </center>
         </div>
-        <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="right image" style="background-image: url('/images/culture/Difference2.jpg');"></div>
     </div>
 
     <div class="culture-space">
@@ -116,20 +115,20 @@
     </div>
 
     <div class="culture-section">
-        <div class="left image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="left image" style="background-image: url('/images/culture/Expectation1.jpg');"></div>
         <div class="culture-header">
             <a>
-                OUR CULTURE
+                What to Expect
             </a>
         </div>
         <div class="culture-content">
             <center>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    As a teacher, a very different environment is expected. One where more freedom in terms of methods of teaching is encouraged. Usually, students approach teachers freely to ask questions, get help, schedule extra classes and get feedback. You are their friendly mentors, and you guide them in terms of subject matters and school topics.
                 </p>
             </center>
         </div>
-        <div class="right image" style="background-image: url('https://s3-ap-southeast-1.amazonaws.com/tv-prod/school/photo/49892-large.jpg');"></div>
+        <div class="right image" style="background-image: url('/images/culture/Expectation2.jpg');"></div>
     </div>
     <br />
     <br />
@@ -155,7 +154,7 @@
     @foreach (var Event in Model.Events)
     {
         <div class="event-card">
-            <div class="event-bg" style="background-image: url('/images/events/@Event.Image');" onmousedown="OnClick('@Event.Id')"></div>
+            <div class="event-bg" style="background-image: url('/images/events/@Event.Image');" onmousedown="ShowEventModal('@Event.Id')"></div>
             <a class="event-name">
                 @Event.Name
             </a>
@@ -315,17 +314,17 @@
     <br />
     <br />
     <br />
+
     <a class="section-header">
         Pioneers
     </a>
+
     <br />
 
     @foreach (var pioneerGroup in Model.PioneerGroups)
     {
         <div class="pioneer-group">
-
             <div class="pioneer-group-grid-container">
-
 
                 <a class="pioneer-group-title">
                     @pioneerGroup.Title
@@ -335,7 +334,8 @@
                 {
                     <div class="pioneer">
 
-                        <div class="pioneer-grid-container">
+                        <div class="pioneer-grid-container" onmousedown="ShowPioneerModal('@pioneer.Id')">
+
                             <div class="pioneer-image" style="background-image: url('/images/pioneers/@pioneer.ImagePath');">
 
                             </div>
@@ -348,8 +348,6 @@
                                     </a>
                                 </center>
 
-                                @*<br />*@
-
                                 <center>
                                     <a class="pioneer-role">
                                         @pioneer.Role
@@ -361,8 +359,15 @@
 
                     </div>
                 }
+
             </div>
         </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
     }
 </div>
 
@@ -375,7 +380,7 @@
         events = @Html.Raw(Json.Serialize(Model.Events));
     }
 
-    function OnClick(id) {
+    function ShowEventModal(id) {
         for (i = 0; i < events.length; i++) {
             if (events[i].id == id) {
                 var event = events[i];
@@ -390,20 +395,21 @@
 
 <!-- PIONEERS HOVER MANAGER -->
 <script type="text/javascript">
-    var events;
+    var pioneerGroups;
 
     // Called from Body's OnLoad
     function InitializePioneers() {
-        events = @Html.Raw(Json.Serialize(Model.Events));
+        pioneerGroups = @Html.Raw(Json.Serialize(Model.PioneerGroups));
     }
 
-    function OnClick(id) {
-        for (i = 0; i < events.length; i++) {
-            if (events[i].id == id) {
-                var event = events[i];
-                var subheader = event.startTime + " - " + event.endTime + " (Approx.)";
-                ShowModal(event.name, subheader, event.description);
-                break;
+    function ShowPioneerModal(id) {
+        for (i = 0; i < pioneerGroups.length; i++) {
+            for (n = 0; n < pioneerGroups[i].pioneers.length; n++) {
+                if (pioneerGroups[i].pioneers[n].id == id) {
+                    var pioneer = pioneerGroups[i].pioneers[n];
+                    ShowModal(pioneer.name, pioneer.role, pioneer.description);
+                    break;
+                }
             }
         }
     }

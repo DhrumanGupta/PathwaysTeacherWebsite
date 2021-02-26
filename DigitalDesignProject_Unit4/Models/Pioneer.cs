@@ -13,6 +13,7 @@ namespace Website.Models
         public string Name { get; set; }
         public string Role { get; set; }
         public string Description { get; set; }
+        public string Id { get; set; }
         [JsonProperty("ImgPath")]
         public string ImagePath { get; set; }
     }

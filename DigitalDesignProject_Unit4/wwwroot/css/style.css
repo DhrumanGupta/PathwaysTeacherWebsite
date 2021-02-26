@@ -193,12 +193,12 @@ br {
 @media screen and (max-width: 1000px) {
 	.culture-section {
 		grid-template-columns: 1fr !important;
-		grid-template-areas: "left" "left" "header" "content" "content" "content" "content" !important;
+		grid-template-areas: "left" "left" "header" "content" "content" "content" "content" "content" !important;
 		width: 80vw !important;
 	}
 
 		.culture-section .culture-content {
-			font-size: calc(22px + 6 * ((25vw - 260px) / 320)) !important;
+			font-size: calc(18px + 6 * ((25vw - 260px) / 320)) !important;
 			/* Center Text */
 			align-items: end !important;
 			/* End Center Text */
@@ -224,9 +224,9 @@ br {
 	width: 70vw;
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
-	grid-column-gap: 0.7vw;
-	grid-auto-rows: calc(.7vh + 40px);
-	grid-template-areas: ". header ." "left content right" "left content right" "left content right" "left content right" "left content right" ". content .";
+	grid-column-gap: 0.6vw;
+	grid-auto-rows: calc(1vh + 35px);
+	grid-template-areas: ". header ." "left content right" "left content right" "left content right" "left content right" "left content right" ". . .";
 }
 
 	.culture-section .left {
@@ -251,7 +251,7 @@ br {
 		/* Grid Settings */
 		grid-area: content;
 		/* End Grid Settings */
-		font-size: calc(16px + 6 * ((20vw - 260px) / 320));
+		font-size: calc(18px + 6 * ((20vw - 260px) / 320));
 		/* Center Text */
 		display: flex;
 		justify-content: center;
