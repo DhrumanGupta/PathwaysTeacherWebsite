@@ -449,6 +449,13 @@ br {
 
 /*#region Pioneers*/
 
+@media screen and (max-width: 1000px) {
+	.pioneer-group-grid-container {
+		grid-template-columns: 1fr 1fr !important;
+		grid-auto-rows: calc((1/4) * 90vw) !important;
+	}
+}
+
 .pioneer-group {
 	margin: auto;
 	width: 90vw;
@@ -482,7 +489,7 @@ br {
 	transition: 0.2s;
 }
 
-/*	.pioneer-grid-container:active,
+	/*	.pioneer-grid-container:active,
 	.pioneer-grid-container:hover {
 		grid-template-rows: 5.5fr 1fr;
 		cursor: pointer;

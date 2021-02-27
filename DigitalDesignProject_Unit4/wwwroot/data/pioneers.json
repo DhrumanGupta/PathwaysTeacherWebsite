@@ -31,38 +31,5 @@
 				"ImgPath": "Meenakshi_Singal.jpg"
 			}
 		]
-	},
-	{
-		"Title": "Faculty Leaders",
-		"Pioneers": [
-			{
-				"Name": "Dr. Shalini Advani",
-				"Role": "School Director",
-				"Description": "Description Here",
-				"Id": "LGGXsrfRDXTkLqRg",
-				"ImgPath": "Shalini_Advani.jpg"
-			},
-			{
-				"Name": "Mr. Alexander Abraham",
-				"Role": "Senior School Principal",
-				"Description": "Description Here",
-				"Id": "7tKjgwXzktr0235y",
-				"ImgPath": "Alexander_Abraham.jpg"
-			},
-			{
-				"Name": "Ms. Sunanda Sandhir",
-				"Role": "Middle School Principal",
-				"Description": "Description Here",
-				"Id": "PRRRtEfhVHx6Q5LS",
-				"ImgPath": "Sunanda_Sandhir.jpg"
-			},
-			{
-				"Name": "Ms. Meenakshi Singal",
-				"Role": "Principal Primary School",
-				"Description": "Description Here",
-				"Id": "rw4lkxCqQcx8QlKk",
-				"ImgPath": "Meenakshi_Singal.jpg"
-			}
-		]
 	}
 ]
