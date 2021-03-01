@@ -489,12 +489,12 @@ br {
 	transition: 0.2s;
 }
 
-	/*	.pioneer-grid-container:active,
+		.pioneer-grid-container:active,
 	.pioneer-grid-container:hover {
 		grid-template-rows: 5.5fr 1fr;
 		cursor: pointer;
 		height: 100%;
-	}*/
+	}
 
 	.pioneer-grid-container .pioneer-image {
 		background-position: center;
