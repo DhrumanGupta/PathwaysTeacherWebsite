@@ -1,0 +1,73 @@
+[
+  {
+    "Name": "Google Classroom",
+    "Img": "ClassroomLogo.png",
+    "Usage": "Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.",
+    "Content": [
+      "Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.",
+      "Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast."
+    ],
+      "Resources"
+      :
+      [
+        {
+          "Text": "Google Classroom 101",
+          "Link": "https://www.youtube.com/watch?v=UEFgW--0094"
+        },
+        {
+          "Text": "Teacher Center | Google Classroom Training",
+          "Link": "https://edu.google.com/teacher-center/products/classroom/?modal_active=none"
+        },
+        {
+          "Text": "The NEW Google Classroom - Full Tutorial",
+          "Link": "https://www.youtube.com/watch?v=M6L-nZGIUTE"
+        }
+      ]
+  },
+  {
+    "Name": "Wizemen",
+    "Img": "WizemenLogo.png",
+    "Usage": "Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.",
+    "Content": [
+      "Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.",
+      "Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast."
+    ],
+    "Resources": [
+      {
+        "Text": "Google Classroom 101",
+        "Link": "https://www.youtube.com/watch?v=UEFgW--0094"
+      },
+      {
+        "Text": "Teacher Center | Google Classroom Training",
+        "Link": "https://edu.google.com/teacher-center/products/classroom/?modal_active=none"
+      },
+      {
+        "Text": "The NEW Google Classroom - Full Tutorial",
+        "Link": "https://www.youtube.com/watch?v=M6L-nZGIUTE"
+      }
+    ]
+  },
+  {
+    "Name": "Google Classroom",
+    "Img": "ClassroomLogo.png",
+    "Usage": "Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.",
+    "Content": [
+      "Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.",
+      "Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast."
+    ],
+    "Resources": [
+      {
+        "Text": "Google Classroom 101",
+        "Link": "https://www.youtube.com/watch?v=UEFgW--0094"
+      },
+      {
+        "Text": "Teacher Center | Google Classroom Training",
+        "Link": "https://edu.google.com/teacher-center/products/classroom/?modal_active=none"
+      },
+      {
+        "Text": "The NEW Google Classroom - Full Tutorial",
+        "Link": "https://www.youtube.com/watch?v=M6L-nZGIUTE"
+      }
+    ]
+  }
+]

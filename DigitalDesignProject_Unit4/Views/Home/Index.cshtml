@@ -69,68 +69,37 @@
     <br />
     <br />
 
-    <div class="culture-section">
-        <div class="left image" style="background-image: url('/images/culture/TheEnvironment1.jpg');"></div>
-        <div class="culture-header">
-            <a>
-                The Environment
-            </a>
-        </div>
-        <div class="culture-content">
-            <center>
-                <p>
-                    Our environment is one where students are encouraged to be more interactive with teachers. They are taught to ask questions and clear their doubts on the spot. As our motto follows, we not only focus on education, we try to create a good balance in academics, physical activities and extracurriculars. The balance shifted radically during major events, giving more priority to the approaching event.
-                </p>
-            </center>
-        </div>
-        <div class="right image" style="background-image: url('/images/culture/TheEnvironment2.jpg');"></div>
-    </div>
+    @for (int i = 0; i < Model.CultureData.Length; i++)
+    {
+        var data = Model.CultureData[i];
 
-    <div class="culture-space">
-        <div class="culture-space-color">
+        <div class="culture-section">
+            <div class="left image" style="background-image: url('/images/culture/@data.LeftImage');"></div>
+            <div class="culture-header">
+                <a>
+                    @data.Title
+                </a>
+            </div>
+            <div class="culture-content">
+                <center>
+                    <p>
+                        @data.Description
+                    </p>
+                </center>
+            </div>
+            <div class="right image" style="background-image: url('/images/culture/@data.RightImage');"></div>
+        </div>
 
-        </div>
-    </div>
+        if (i != Model.CultureData.Length - 1)
+        {
+            <div class="culture-space">
+                <div class="culture-space-color">
 
-    <div class="culture-section">
-        <div class="left image" style="background-image: url('/images/culture/Difference1.jpg');"></div>
-        <div class="culture-header">
-            <a>
-                How is it Different?
-            </a>
-        </div>
-        <div class="culture-content">
-            <center>
-                <p>
-                    The school has a friendly and respectful environment where a lot of formal customs are removed. These include but are not limited to: standing up and greeting the teacher together as a class, asking freely for extra time to clear doubts and in general, having a more casual and friendly, yet respecting relationship with students. Students are encouraged to be more independent learners, who are able to learn facts, information and think without constant involvement from the teacher.
-                </p>
-            </center>
-        </div>
-        <div class="right image" style="background-image: url('/images/culture/Difference2.jpg');"></div>
-    </div>
+                </div>
+            </div>
+        }
+    }
 
-    <div class="culture-space">
-        <div class="culture-space-color">
-
-        </div>
-    </div>
-
-    <div class="culture-section">
-        <div class="left image" style="background-image: url('/images/culture/Expectation1.jpg');"></div>
-        <div class="culture-header">
-            <a>
-                What to Expect
-            </a>
-        </div>
-        <div class="culture-content">
-            <center>
-                <p>
-                    As a teacher, a very different environment is expected. One where more freedom in terms of methods of teaching is encouraged. Usually, students approach teachers freely to ask questions, get help, schedule extra classes and get feedback. You are their friendly mentors, and you guide them in terms of subject matters and school topics.
-                </p>
-            </center>
-        </div>
-        <div class="right image" style="background-image: url('/images/culture/Expectation2.jpg');"></div>
-    </div>
     <br />
     <br />
     <br />
@@ -186,122 +155,55 @@
 
     <div class="system-grid-container">
 
-        <!-- CLASSROOM -->
-        <div class="system-grid-item">
-            <a class="system-header">
-                Google Classroom
-            </a>
+        @foreach (var system in Model.Systems)
+        {
+            <div class="system-grid-item">
+                <a class="system-header">
+                    @system.Name
+                </a>
 
-            <div class="system-image" style="background-image: url(/images/systems/ClassroomLogo.png);"></div>
+                <div class="system-image" style="background-image: url(/images/systems/@system.Image);"></div>
 
-            <p class="system-usage system-text">
-                Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.
-            </p>
-
-            <div class="system-content system-text">
-                <p>
-                    Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.
-                    <br />
-                    <br />
-
-                    Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast.
-
-                    <br />
-                    <br />
-
-                    Below are a few resources:
-                    <br />
-                    <br />
-
-                    &bull; <a href="https://www.youtube.com/watch?v=UEFgW--0094" target="_blank">Google Classroom 101</a>
-                    <br />
-                    <br />
-                    &bull; <a href="https://edu.google.com/teacher-center/products/classroom/?modal_active=none" target="_blank">Teacher Center | Google Classroom Training</a>
-                    <br />
-                    <br />
-                    &bull; <a href="https://www.youtube.com/watch?v=M6L-nZGIUTE" target="_blank">The NEW Google Classroom - Full Tutorial</a>
+                <p class="system-usage system-text">
+                    @system.Usage
                 </p>
 
+                <div class="system-content system-text">
+                    <p>
+                        @foreach (var paragraph in system.Content)
+                        {
+                            <a>
+                                @paragraph
+                            </a>
+                            <br />
+                            <br />
+                        }
+
+                        <br />
+
+                        Below are a few resources:
+
+                        <br />
+                        <br />
+
+                        @for (int n = 0; n < system.Resources.Length; n++)
+                        {
+                            var resource = system.Resources[n];
+
+                            @Html.Raw("&bull;")<a href="@resource.Link" target="_blank">@resource.Text</a>
+
+                            if (n != system.Resources.Length - 1)
+                            {
+                                <br />
+                                <br />
+                            }
+                        }
+                    </p>
+
+                </div>
             </div>
-        </div>
+        }
 
-        <!-- WIZEMEN -->
-        <div class="system-grid-item">
-            <a class="system-header">
-                Wizemen
-            </a>
-
-            <div class="system-image" style="background-image: url(/images/systems/WizemenLogo.png);"></div>
-
-            <p class="system-usage system-text">
-                Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.
-            </p>
-
-            <div class="system-content system-text">
-                <p>
-                    Classroom can be used will commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.
-                    <br />
-                    <br />
-
-                    Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast.
-
-                    <br />
-                    <br />
-
-                    Below are a few resources:
-                    <br />
-                    <br />
-
-                    &bull; <a href="https://www.youtube.com/watch?v=UEFgW--0094" target="_blank">Google Classroom 101</a>
-                    <br />
-                    <br />
-                    &bull; <a href="https://edu.google.com/teacher-center/products/classroom/?modal_active=none" target="_blank">Teacher Center | Google Classroom Training</a>
-                    <br />
-                    <br />
-                    &bull; <a href="https://www.youtube.com/watch?v=M6L-nZGIUTE" target="_blank">The NEW Google Classroom - Full Tutorial</a>
-                </p>
-
-            </div>
-        </div>
-
-        <!-- VERACROSS -->
-        <div class="system-grid-item">
-            <a class="system-header">
-                Veracross
-            </a>
-
-            <div class="system-image" style="background-image: url(/images/systems/ClassroomLogo.png);"></div>
-
-            <p class="system-usage system-text">
-                Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.
-            </p>
-
-            <div class="system-content system-text">
-                <p>
-                    Classroom can be used will commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.
-                    <br />
-                    <br />
-
-                    Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast.
-
-                    <br />
-                    <br />
-
-                    Below are a few resources:
-                    <br />
-                    <br />
-
-                    &bull; <a href="https://www.youtube.com/watch?v=UEFgW--0094" target="_blank">Google Classroom 101</a>
-                    <br />
-                    <br />
-                    &bull; <a href="https://edu.google.com/teacher-center/products/classroom/?modal_active=none" target="_blank">Teacher Center | Google Classroom Training</a>
-                    <br />
-                    <br />
-                    &bull; <a href="https://www.youtube.com/watch?v=M6L-nZGIUTE" target="_blank">The NEW Google Classroom - Full Tutorial</a>
-                </p>
-
-            </div>
-        </div>
     </div>
 
     <br />
@@ -341,7 +243,7 @@
                     <div class="pioneer">
 
                         <div class="pioneer-grid-container" onmousedown="ShowPioneerModal('@pioneer.Id')">
-                            <!-- onmousedown="ShowPioneerModal('@pioneer.Id')" -->
+                              <!-- onmousedown="ShowPioneerModal('@pioneer.Id')" -->
 
                             <div class="pioneer-image" style="background-image: url('/images/pioneers/@pioneer.ImagePath');">
 

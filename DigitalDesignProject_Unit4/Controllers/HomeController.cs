@@ -35,9 +35,13 @@ namespace Website.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            var dataModel = new DataModel();
-            dataModel.Events = GetsEvents();
-            dataModel.PioneerGroups = GetPioneers();
+            var dataModel = new DataModel()
+            {
+                Systems = GetData<Models.System[]>("systems"),
+                CultureData = GetData<Culture[]>("culture"),
+                Events = GetData<Event[]>("events"),
+                PioneerGroups = GetData<PioneerGroup[]>("pioneers")
+            };
 
             return View(dataModel);
         }
@@ -250,7 +254,7 @@ namespace Website.Controllers
 
             int idx = email.LastIndexOf('@');
 
-            if (idx == -1 ) { return false; }
+            if (idx == -1) { return false; }
 
             string domain = email.Substring(idx + 1).ToLower();    //domain half e.g. my.org
 
@@ -261,14 +265,9 @@ namespace Website.Controllers
 
         #region Data Model Helpers
 
-        private Event[] GetsEvents()
+        private T GetData<T>(string fileName)
         {
-            return JsonConvert.DeserializeObject<Event[]>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", "events.json")));
-        }
-
-        private PioneerGroup[] GetPioneers()
-        {
-            return JsonConvert.DeserializeObject<PioneerGroup[]>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", "pioneers.json")));
+            return JsonConvert.DeserializeObject<T>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", $"{fileName}.json")));
         }
 
         #endregion
