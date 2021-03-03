@@ -380,7 +380,7 @@ br {
 	.system-grid-container {
 		width: 90vw !important;
 		grid-template-columns: 1fr 1fr !important;
-		grid-auto-rows: minmax(calc(0.8 * 90vw), calc(0.9 * 90vw)) !important;
+		grid-auto-rows: minmax(calc(0.9 * 90vw), calc(1 * 90vw)) !important;
 	}
 }
 
@@ -390,7 +390,7 @@ br {
 	/* Grid Settings */
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	grid-auto-rows: minmax(calc(0.45* 80vw), calc(0.55* 80vw));
+	grid-auto-rows: minmax(calc(0.45* 90vw), calc(0.55* 90vw));
 	grid-column-gap: 4vw;
 	grid-row-gap: 5vh;
 	/*	End Grid Settings*/
