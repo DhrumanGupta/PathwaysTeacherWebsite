@@ -35,13 +35,22 @@ namespace Website.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            var dataModel = new DataModel()
+            var dataModel = new DataModel();
+
+            var systems = GetData<Models.System[]>(ContentRootPathFromFileName("systems.json"));
+            foreach (var system in systems)
             {
-                Systems = GetData<Models.System[]>("systems"),
-                CultureData = GetData<Culture[]>("culture"),
-                Events = GetData<Event[]>("events"),
-                PioneerGroups = GetData<PioneerGroup[]>("pioneers")
-            };
+                if (system.Resources == null)
+                {
+                    system.Resources = new Resource[0];
+                }
+            }
+
+            dataModel.Systems = systems;
+
+            dataModel.CultureData = GetData<Culture[]>(ContentRootPathFromFileName("culture.json"));
+            dataModel.Events = GetData<Event[]>(ContentRootPathFromFileName("events.json"));
+            dataModel.PioneerGroups = GetData<PioneerGroup[]>(ContentRootPathFromFileName("pioneers.json"));
 
             return View(dataModel);
         }
@@ -265,9 +274,18 @@ namespace Website.Controllers
 
         #region Data Model Helpers
 
-        private T GetData<T>(string fileName)
+        private string ContentRootPathFromFileName(string fileName)
         {
-            return JsonConvert.DeserializeObject<T>(System.IO.File.ReadAllText(Path.Combine(_webHostEnvironment.WebRootPath, "data", $"{fileName}.json")));
+            string folderPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Content");
+            string path = Path.Combine(folderPath, fileName);
+            return path;
+        }
+
+        private T GetData<T>(string path)
+        {
+            string jsonTextData = System.IO.File.ReadAllText(path);
+
+            return JsonConvert.DeserializeObject<T>(jsonTextData);
         }
 
         #endregion

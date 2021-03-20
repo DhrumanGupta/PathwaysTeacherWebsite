@@ -88,6 +88,9 @@
                 </center>
             </div>
             <div class="right image" style="background-image: url('/images/culture/@data.RightImage');"></div>
+
+            <div class="empty">
+            </div>
         </div>
 
         if (i != Model.CultureData.Length - 1)
@@ -162,11 +165,11 @@
                     @system.Name
                 </a>
 
-                <div class="system-image" style="background-image: url(/images/systems/@system.Image);"></div>
+                <div class="system-image" style="background-image: url('/images/systems/@system.Image');"></div>
 
-                <p class="system-usage system-text">
+                <a class="system-usage system-text">
                     @system.Usage
-                </p>
+                </a>
 
                 <div class="system-content system-text">
                     <p>
@@ -181,10 +184,22 @@
 
                         <br />
 
-                        Below are a few resources:
+                        @if (system.Resources.Length == 1)
+                        {
+                            <a>Below is a resource:</a>
+                            <br />
+                            <br />
+                        }
+                        else if (system.Resources.Length > 1)
+                        {
+                            <a>Below are a few resources:</a>
+                            <br />
+                            <br />
+                        }
 
-                        <br />
-                        <br />
+
+
+
 
                         @for (int n = 0; n < system.Resources.Length; n++)
                         {
@@ -243,7 +258,7 @@
                     <div class="pioneer">
 
                         <div class="pioneer-grid-container">
-                              @*onmousedown="ShowPioneerModal('@pioneer.Id')"*@
+                            @*onmousedown="ShowPioneerModal('@pioneer.Id')"*@
 
                             <div class="pioneer-image" style="background-image: url('/images/pioneers/@pioneer.ImagePath');">
 
