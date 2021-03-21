@@ -218,7 +218,7 @@ namespace Website.Controllers
             return RedirectToAction(nameof(LockScreen));
         }
 
-        public IActionResult ResetPassword()
+        public IActionResult ResetPassword(string email, string token)
         {
             return View();
         }
