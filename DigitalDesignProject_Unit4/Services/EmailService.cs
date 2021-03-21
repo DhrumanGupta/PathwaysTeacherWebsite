@@ -7,7 +7,6 @@ namespace Website.Services
 {
     public interface IEmailService
     {
-        void Send(string sendTo, string body);
         void Send(string sendTo, string subject, string body);
     }
 
@@ -18,11 +17,6 @@ namespace Website.Services
         public EmailService(IConfiguration configuration)
         {
             _configuration = configuration;
-        }
-
-        public void Send(string to, string body)
-        {
-            Send(to, "", body);
         }
 
         public void Send(string to, string subject, string body)

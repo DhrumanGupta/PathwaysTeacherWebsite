@@ -27,13 +27,10 @@ namespace Website
             services.AddControllersWithViews();
             services.AddMvcCore();
 
-            services.AddRazorPages();
-
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("LocalDB"))
                 );
 
-            // AddIdentity registers the services
             services.AddIdentity<IdentityUser, IdentityRole>(config =>
             {
                 config.Password.RequiredLength = 1;

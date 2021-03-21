@@ -60,6 +60,12 @@ namespace Website.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult Wizemen()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(User user)
         {
@@ -107,7 +113,7 @@ namespace Website.Controllers
                 return RedirectToAction(nameof(LockScreen));
             }
 
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 TempDataError("Please enter a password");
                 return RedirectToAction(nameof(LockScreen));
@@ -147,7 +153,7 @@ namespace Website.Controllers
                 return RedirectToAction(nameof(LockScreen));
             }
 
-            TempDataError("Server error, please try again!");
+            TempDataError("Server error, please try again later");
             return RedirectToAction(nameof(LockScreen));
         }
 
@@ -212,7 +218,7 @@ namespace Website.Controllers
             return RedirectToAction(nameof(LockScreen));
         }
 
-        public IActionResult ResetPassword(string email, string token)
+        public IActionResult ResetPassword()
         {
             return View();
         }
@@ -234,12 +240,6 @@ namespace Website.Controllers
                 TempDataError(result.Errors.ToString());
             }
 
-            return RedirectToAction(nameof(LockScreen));
-        }
-
-        public async Task<IActionResult> LogOut()
-        {
-            await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(LockScreen));
         }
 
@@ -276,7 +276,7 @@ namespace Website.Controllers
 
         private string ContentRootPathFromFileName(string fileName)
         {
-            string folderPath = Path.Combine(_webHostEnvironment.ContentRootPath, "Content");
+            string folderPath = Path.Combine(_webHostEnvironment.ContentRootPath, "UserHiddenContent");
             string path = Path.Combine(folderPath, fileName);
             return path;
         }

@@ -27,12 +27,17 @@
   {
     "Name": "Wizemen",
     "Img": "WizemenLogo.png",
-    "Usage": "Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.",
+    "Usage": "Wizemen is the school's in-house software. It is used to make graded assignments like summatives and end-of-year exams, publish student grades, edit report cards, mark attendance, and plan units.",
     "Content": [
-      "Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.",
-      "Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast."
+      "Students can download wizemen's software, from which they can open and complete assessments. No other applications can be opened when students use this, which significantly reduces the chances of dishonesty. ",
+      "It allows you to plan all the units with ease and provides a format for each type (PYP, MYP, DP). You can create new assignments and assign them to classes with a fixed time limit."
     ],
-    "Resources": null
+    "Resources": [
+      {
+        "Text": "Wizemen Access Flowchart",
+        "Link": "/Home/Wizemen"
+      }
+    ]
   },
   // Peoplesoft
   {
@@ -45,8 +50,8 @@
     ],
     "Resources": [
       {
-        "Text": "Google Classroom 101",
-        "Link": "https://www.youtube.com/watch?v=UEFgW--0094"
+        "Text": "How to Create Leave of Absence in Oracle Self Service - Oracle Tutorials",
+        "Link": "https://www.youtube.com/watch?v=gxeDkCeEt58"
       }
     ]
   }

@@ -183,29 +183,19 @@
                         }
 
                         <br />
-
-                        @if (system.Resources.Length == 1)
-                        {
-                            <a>Below is a resource:</a>
-                            <br />
-                            <br />
-                        }
-                        else if (system.Resources.Length > 1)
+                        
+                        @if (system.Resources.Length > 1)
                         {
                             <a>Below are a few resources:</a>
                             <br />
                             <br />
                         }
 
-
-
-
-
                         @for (int n = 0; n < system.Resources.Length; n++)
                         {
                             var resource = system.Resources[n];
 
-                            @Html.Raw("&bull;")<a href="@resource.Link" target="_blank">@resource.Text</a>
+                            @Html.Raw("&bull;") <a href="@resource.Link" target="_blank">@resource.Text</a>
 
                             if (n != system.Resources.Length - 1)
                             {

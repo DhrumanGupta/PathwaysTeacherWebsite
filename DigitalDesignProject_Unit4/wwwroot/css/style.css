@@ -233,7 +233,6 @@ br {
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
 	grid-column-gap: 0.6vw;
-	/*	grid-auto-rows: calc(1vh + 35px);*/
 	grid-auto-rows: minmax(min-content, max-content);
 	grid-template-areas: ". header ." "left content right" "left content right" "left content right" "left content right" "left content right" "empty empty empty";
 }
@@ -242,8 +241,8 @@ br {
 		/* Grid Settings */
 		grid-area: left;
 		/* End Grid Settings */
-	}
 
+	}
 	.culture-section .culture-header {
 		/* Grid Settings */
 		grid-area: header;

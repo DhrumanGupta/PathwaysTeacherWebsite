@@ -26,14 +26,13 @@ function ShowModal(header, subheader, content) {
     modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-function CloseModal() {
-    modal.style.display = "none";
-}
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
     if (event.target == modal) {
         CloseModal();
     }
+}
+
+function CloseModal() {
+    modal.style.display = "none";
 }
