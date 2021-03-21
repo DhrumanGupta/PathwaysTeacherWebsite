@@ -27,6 +27,8 @@ namespace Website
             services.AddControllersWithViews();
             services.AddMvcCore();
 
+            services.AddRazorPages();
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySQL(Configuration.GetConnectionString("LocalDB"))
                 );
