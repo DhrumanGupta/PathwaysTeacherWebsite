@@ -31,7 +31,6 @@ namespace Website.Controllers
             _context = context;
         }
 
-        // Homepage is protected
         [Authorize]
         public IActionResult Index()
         {
