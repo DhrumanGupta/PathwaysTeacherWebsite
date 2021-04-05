@@ -1,0 +1,58 @@
+[
+  // Google Classroom
+  {
+    "Name": "Google Classroom",
+    "Img": "ClassroomLogo.png",
+    "Usage": "Google classroom is one of the most used tools in the school. We use it to share resources, create assignments, and ease communication. It streamlines communication and file sharing with students.",
+    "Content": [
+      "Classroom can be used with commonly used tools, such as Gmail, Google Docs, and Google Calendar. Google Classroom integrates Docs, Sheets, Slides, Gmail, and Calendar into a cohesive platform to manage student and teacher communication. It allows you to see which students have completed their assignments and you can provide direct, real-time feedback and grades.",
+      "Being a part of the G-Suite, google classroom is fairly intuitive. One can figure out the interface and get used to the workflow rather fast."
+    ],
+    "Resources": [
+      {
+        "Text": "Google Classroom 101",
+        "Link": "https://www.youtube.com/watch?v=UEFgW--0094"
+      },
+      {
+        "Text": "Teacher Center | Google Classroom Training",
+        "Link": "https://edu.google.com/teacher-center/products/classroom/?modal_active=none"
+      },
+      {
+        "Text": "The NEW Google Classroom - Full Tutorial",
+        "Link": "https://www.youtube.com/watch?v=M6L-nZGIUTE"
+      }
+    ]
+  },
+  // Wizemen
+  {
+    "Name": "Wizemen",
+    "Img": "WizemenLogo.png",
+    "Usage": "Wizemen is the school's in-house software. It is used to make graded assignments like summatives and end-of-year exams, publish student grades, edit report cards, mark attendance, and plan units.",
+    "Content": [
+      "Students can download wizemen's software, from which they can open and complete assessments. No other applications can be opened when students use this, which significantly reduces the chances of dishonesty. ",
+      "It allows you to plan all the units with ease and provides a format for each type (PYP, MYP, DP). You can create new assignments and assign them to classes with a fixed time limit."
+    ],
+    "Resources": [
+      {
+        "Text": "Wizemen Access Flowchart",
+        "Link": "/Home/Wizemen"
+      }
+    ]
+  },
+  // Peoplesoft
+  {
+    "Name": "Peoplesoft",
+    "Img": "PeoplesoftLogo.png",
+    "Usage":  "Peoplesoft is a human resources portal we use to manage leaves and absence. It is used to apply for leaves, and shows the records of all your leaves. You can put in hours for each day your are on leave.",
+    "Content": [
+      "Peoplesoft almost cuts down the need to write emails and make calls to apply for leaves. The status of the request and details can be seen on the portal.",
+      "It has a user-friendly interface, making it even easier to apply for leaves."
+    ],
+    "Resources": [
+      {
+        "Text": "How to Create Leave of Absence in Oracle Self Service - Oracle Tutorials",
+        "Link": "https://www.youtube.com/watch?v=gxeDkCeEt58"
+      }
+    ]
+  }
+]
