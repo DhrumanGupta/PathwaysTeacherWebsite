@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "DigitalDesignProject_Unit4\Website.csproj", "{65474818-1143-417E-995A-6377421F1431}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Website\Website.csproj", "{65474818-1143-417E-995A-6377421F1431}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventJsonEncoder", "EventJsonEncoder\EventJsonEncoder.csproj", "{EFA115A2-506F-4F1E-914C-4CF2237D14DE}"
 EndProject
