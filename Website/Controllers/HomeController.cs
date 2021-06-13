@@ -17,18 +17,16 @@ namespace Website.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailService _emailService;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly AppDbContext _context;
 
         private static readonly string errorColor = "#ff4d4d";
         private static readonly string successColor = "#97ff80";
 
-        public HomeController(UserManager<IdentityUser> usermanager, SignInManager<IdentityUser> signInManager, IEmailService emailService, IWebHostEnvironment webHostEnvironment, AppDbContext context)
+        public HomeController(UserManager<IdentityUser> usermanager, SignInManager<IdentityUser> signInManager, IEmailService emailService, IWebHostEnvironment webHostEnvironment)
         {
             _userManager = usermanager;
             _signInManager = signInManager;
             _emailService = emailService;
             _webHostEnvironment = webHostEnvironment;
-            _context = context;
         }
 
         [Authorize]
@@ -71,7 +69,7 @@ namespace Website.Controllers
             string email = user.Email;
             string password = user.Password;
 
-            if (email == null)
+            if (string.IsNullOrWhiteSpace(email))
             {
                 TempDataError("Please enter an email!");
                 return RedirectToAction(nameof(LockScreen));
